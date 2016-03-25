@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TrainJournal">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NumOfSets" Type="Byte" Nullable="false" />
+    <Property Name="NumOfReps" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_TrainJournal_User" FromRole="TrainJournal" ToRole="User" />
+    <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="50" Nullable="false" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="TrainJournal" Relationship="Self.FK_TrainJournal_User" FromRole="User" ToRole="TrainJournal" />
+    <NavigationProperty Name="UserAntropometry" Relationship="Self.FK_UserAntropometry_User" FromRole="User" ToRole="UserAntropometry" />
+    <NavigationProperty Name="Weight" Relationship="Self.FK_Weight_User" FromRole="User" ToRole="Weight" />
+  </EntityType>
+  <EntityType Name="UserAntropometry">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nech" Type="Single" />
+    <Property Name="Chest" Type="Single" />
+    <Property Name="Arm" Type="Single" />
+    <Property Name="Waist" Type="Single" />
+    <Property Name="Hip" Type="Single" />
+    <Property Name="Shin" Type="Single" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserAntropometry_User" FromRole="UserAntropometry" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Weight">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FatPercent" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Weight_User" FromRole="Weight" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_TrainJournal_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="TrainJournal" Type="Self.TrainJournal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="TrainJournal">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAntropometry_User">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserAntropometry" Type="Self.UserAntropometry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="UserAntropometry">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Weight_User">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Weight" Type="Self.Weight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="Weight">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Training_JournalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TrainJournal" EntityType="Self.TrainJournal" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserAntropometry" EntityType="Self.UserAntropometry" />
+    <EntitySet Name="Weight" EntityType="Self.Weight" />
+    <AssociationSet Name="FK_TrainJournal_User" Association="Self.FK_TrainJournal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="TrainJournal" EntitySet="TrainJournal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAntropometry_User" Association="Self.FK_UserAntropometry_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAntropometry" EntitySet="UserAntropometry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Weight_User" Association="Self.FK_Weight_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Weight" EntitySet="Weight" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

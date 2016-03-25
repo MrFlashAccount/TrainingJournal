@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TrainJournal">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="NumOfSets" Type="tinyint" Nullable="false" />
+    <Property Name="NumOfReps" Type="tinyint" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAntropometry">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nech" Type="real" />
+    <Property Name="Chest" Type="real" />
+    <Property Name="Arm" Type="real" />
+    <Property Name="Waist" Type="real" />
+    <Property Name="Hip" Type="real" />
+    <Property Name="Shin" Type="real" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Weight">
+    <Key>
+      <PropertyRef Name="Identificator" />
+    </Key>
+    <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Weight" Type="real" Nullable="false" />
+    <Property Name="FatPercent" Type="int" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TrainJournal_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="TrainJournal" Type="Self.TrainJournal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="TrainJournal">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAntropometry_User">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserAntropometry" Type="Self.UserAntropometry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="UserAntropometry">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Weight_User">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Weight" Type="Self.Weight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Identificator" />
+      </Principal>
+      <Dependent Role="Weight">
+        <PropertyRef Name="Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="TrainJournal" EntityType="Self.TrainJournal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAntropometry" EntityType="Self.UserAntropometry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Weight" EntityType="Self.Weight" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TrainJournal_User" Association="Self.FK_TrainJournal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="TrainJournal" EntitySet="TrainJournal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAntropometry_User" Association="Self.FK_UserAntropometry_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAntropometry" EntitySet="UserAntropometry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Weight_User" Association="Self.FK_Weight_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Weight" EntitySet="Weight" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
