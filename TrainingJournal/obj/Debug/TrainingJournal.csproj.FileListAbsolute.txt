@@ -31,10 +31,14 @@ C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJour
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Registration.baml
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Workspace.g.cs
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Workspace.baml
-C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserPage.g.cs
-C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserPage.baml
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.csprojResolveAssemblyReference.cache
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Exercise.g.cs
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Exercise.baml
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\AddExercise.g.cs
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\AddExercise.baml
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\Northwoods.GoWPF.dll
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\Northwoods.GoWPF.xml
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\TrainingJournal.exe.manifest
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\TrainingJournal.application
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.exe.manifest
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.application
