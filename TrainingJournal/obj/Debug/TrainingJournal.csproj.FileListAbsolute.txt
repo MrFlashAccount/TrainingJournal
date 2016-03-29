@@ -36,3 +36,5 @@ C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJour
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.csprojResolveAssemblyReference.cache
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Exercise.g.cs
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\Exercise.baml
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\AddExercise.g.cs
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\AddExercise.baml

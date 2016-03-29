@@ -14,7 +14,6 @@ namespace TrainingJournal
         public User LoginedUser { get; private set; }
         public bool IsStarted { get; private set; }
         public BitmapImage Avatar { get; private set; }
-        public List<TrainJournal> TrainJournals { get; set; } 
 
         /// <summary>
         /// Метод выполняющий вызов верификации пользователя и устанавливающий данные сессии
@@ -104,5 +103,11 @@ namespace TrainingJournal
         public List<Weight> GetWeight() => LoginedUser == null ? null : DBworker.GetWeight(LoginedUser);
 
         public bool AddWeight(Weight weight) => LoginedUser == null ? false : DBworker.AddWeight(weight);
+
+        public void SaveTrainJournals()
+        {
+            if (!IsStarted) return;
+            DBworker.SaveTrainJournals();
+        }
     }
 }

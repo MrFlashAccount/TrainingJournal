@@ -224,5 +224,21 @@ namespace TrainingJournal
                 return false;
             }
         }
+
+        public static bool SaveTrainJournals()
+        {
+            try
+            {
+                using (Training_JournalEntities db = new Training_JournalEntities())
+                {
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

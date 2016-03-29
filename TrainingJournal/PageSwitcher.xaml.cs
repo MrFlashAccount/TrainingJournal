@@ -124,5 +124,10 @@ namespace TrainingJournal
 
             flyout.IsOpen = !flyout.IsOpen;
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }

@@ -36,7 +36,7 @@
                  FontSize="18.667" 
                  Grid.ColumnSpan="2"/>
         
-        <PasswordBox x:Name="PasswordBox" 
+        <PasswordBox x:Name="PasswordBox"
                      HorizontalAlignment="Left" 
                      Margin="400,264,0,0"
                      VerticalAlignment="Top" 
@@ -45,12 +45,12 @@
                      Grid.ColumnSpan="2"/>
         
         <Button x:Name="LoginButton" 
-                Margin="425,0,425,243" 
+                Margin="425,0,425,237" 
                 VerticalAlignment="Bottom" 
                 Content="Войти"
                 Width="150" Height="30" 
                 FontSize="16" 
-                Click="LoginButton_Click"/>
+                Click="LoginButton_Click" IsDefault="True"/>
         <Button 
             Height="25" 
             HorizontalAlignment="Right" 

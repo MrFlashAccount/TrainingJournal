@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TrainingJournal"
         mc:Ignorable="d"
         Title="GymApp" Height="600" Width="1000"
-        Icon="Gymapp_logo.ico">
+        Icon="Gymapp_logo.ico" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="ThreeDBorderWindow" Closing="MetroWindow_Closing" >
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
