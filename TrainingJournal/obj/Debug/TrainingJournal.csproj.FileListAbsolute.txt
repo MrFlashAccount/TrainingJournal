@@ -42,3 +42,4 @@ C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJour
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\TrainingJournal.application
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.exe.manifest
 C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.application
+C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\TrainingJournal.csproj.ResolveComReference.cache

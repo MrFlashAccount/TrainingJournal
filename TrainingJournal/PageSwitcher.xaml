@@ -11,6 +11,9 @@
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
+            <Button Name="UploadToWord"
+                    Content="Выгрузить в Word"
+                    Click="UploadToWord_OnClick"/>
             <Button Name="SettingsButton"  
                     Content="Настройки" 
                     Click="SettingsButton_OnClick"/>
@@ -32,7 +35,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -87,8 +90,87 @@
                             Content="Сохранить"
                             Click="SettingsButtonSave_OnClick"/>
                 </Grid>
-
             </controls:Flyout>
+
+            <controls:Flyout x:Name="ExportFlyout"
+                             Margin="100 0 0 0"
+                             AreAnimationsEnabled="True"
+                             AnimateOnPositionChange="{Binding AnimateOnPositionChange}"
+                             FocusedElement="{Binding ElementName=firstTB}"
+                             Header="Выгрузить в Word"
+                             Position="Right">
+                
+                <StackPanel>
+                <Grid Width="300">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.25*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Text="Что выгрузить?"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               Margin="5,0"
+                               TextAlignment="Right"/>
+                    <TextBlock Text="Куда выгрузить?"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               Margin="5,0"
+                               TextAlignment="Right"/>
+                    <TextBlock Text="Период"
+                               Grid.Column="0"
+                               Grid.Row="2"
+                               Margin="5,0"
+                               TextAlignment="Right"/>
+
+                    <ComboBox Name="WhatUploadListBox"
+                              Grid.Column="1"
+                              Grid.Row="0"
+                              Margin="5,0"
+                              IsEditable="False"
+                              IsReadOnly="False">
+                        <TextBlock>Антропометрия</TextBlock>
+                        <TextBlock>Вес</TextBlock>
+                        <TextBlock>История упражнений</TextBlock>
+                    </ComboBox>
+                    <Button Name="DestinationButton"
+                            Content="Выбрать" 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="5,0"
+                            Click="DestinationButton_OnClick"/>
+                    <DatePicker Name="FromDatePicker"
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Margin="5,0"/>
+                    <DatePicker Name="ToDatePicker"
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                Margin="5,0"/>
+                    
+                </Grid>
+                    <Button Name="OkButton"
+                            Content="ОК"
+                            Width="100"
+                            Margin="5,10"
+                            HorizontalAlignment="Center"
+                            Click="OkButton_OnClick" 
+                            IsDefault="True"/>
+                    <TextBlock Name="ResultTextBlock"
+                               Text=""
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Center"
+                               Margin="5,10"/>
+              </StackPanel>
+                </controls:Flyout>
         </controls:FlyoutsControl>
     </controls:MetroWindow.Flyouts>
 </controls:MetroWindow>

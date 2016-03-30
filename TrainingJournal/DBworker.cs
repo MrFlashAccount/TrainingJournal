@@ -240,5 +240,50 @@ namespace TrainingJournal
                 return false;
             }
         }
+
+        public static List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to, User user)
+        {
+            try
+            {
+                using (Training_JournalEntities db = new Training_JournalEntities())
+                    return
+                        db.UserAntropometry.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<Weight> GetWeightByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (Training_JournalEntities db = new Training_JournalEntities())
+                    return
+                        db.Weight.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<TrainJournal> GeTrainJournalsByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (Training_JournalEntities db = new Training_JournalEntities())
+                    return
+                        db.TrainJournal.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        } 
     }
 }

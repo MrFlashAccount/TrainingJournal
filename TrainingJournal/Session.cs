@@ -109,5 +109,20 @@ namespace TrainingJournal
             if (!IsStarted) return;
             DBworker.SaveTrainJournals();
         }
+
+        public List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to)
+        {
+            return !IsStarted ? null : DBworker.GetUserAntropometryByPeriod(from, to, LoginedUser);
+        }
+
+        public List<Weight> GetWeightByPeriod(DateTime from, DateTime to)
+        {
+            return !IsStarted ? null : DBworker.GetWeightByPeriod(from, to, LoginedUser);
+        }
+
+        public List<TrainJournal> GetTrainJournalsByPeriod(DateTime from, DateTime to)
+        {
+            return !IsStarted ? null : DBworker.GeTrainJournalsByPeriod(from, to, LoginedUser);
+        }
     }
 }
