@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:TrainingJournal.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Добавить упражнение" Height="223" Width="450" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
-    <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Title="Добавить упражнение" 
+                      Height="223" Width="450" 
+                      WindowStyle="ToolWindow" 
+                      ResizeMode="NoResize" 
+                      WindowStartupLocation="CenterOwner">
+    <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />

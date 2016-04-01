@@ -14,7 +14,7 @@
             <Button Name="UploadToWord"
                     Content="Выгрузить в Word"
                     Click="UploadToWord_OnClick"/>
-            <Button Name="SettingsButton"  
+            <Button Name="SettingsButton"
                     Content="Настройки" 
                     Click="SettingsButton_OnClick"/>
         </controls:WindowCommands>

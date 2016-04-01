@@ -48,8 +48,6 @@ namespace TrainingJournal
             }
         }
 
-
-
         public bool Bold
         {
             get
