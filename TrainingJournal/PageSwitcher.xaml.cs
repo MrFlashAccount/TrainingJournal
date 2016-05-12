@@ -89,19 +89,20 @@ namespace TrainingJournal
 
         private void SettingsButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
-            if (NameTextBox.Text != string.Empty)
-                _session.ChangeName(NameTextBox.Text);
+            if (NameTextBox.Text != string.Empty) _session.ChangeName(NameTextBox.Text);
 
-            if (ChangePasswordBox.Password != string.Empty)
-            {
-                ShowLoginDialogOnlyPassword(this, e);
-                ChangePasswordBox.Password = string.Empty;
-            }
+            if (ChangePasswordBox.Password != string.Empty) ShowLoginDialogOnlyPassword(this, e);
         }
 
         private async void ShowLoginDialogOnlyPassword(object sender, RoutedEventArgs e)
         {
-            LoginDialogData result = await this.ShowLoginAsync("Проверка", "Подтвердите смену пароля: ", new LoginDialogSettings { ColorScheme = MetroDialogOptions.ColorScheme, ShouldHideUsername = true });
+            LoginDialogSettings dialogSettings = new LoginDialogSettings
+            {
+                ColorScheme = MetroDialogOptions.ColorScheme,
+                ShouldHideUsername = true,
+                AffirmativeButtonText = "Подтвердить"
+            };
+            LoginDialogData result = await this.ShowLoginAsync("Проверка", "Подтвердите смену пароля: ", dialogSettings);
 
             if (result == null)
             {
@@ -109,11 +110,11 @@ namespace TrainingJournal
             }
             else
             {
-                if (!_session.TryChangePassword(result.Password, ChangePasswordBox.Password))
-                {
-                    MessageDialogResult messageResult = await this.ShowMessageAsync("Неверный пароль.", "Повторите ввод.");
-                    ChangeSettingsFlayoutState();
-                }
+                if (_session.TryChangePassword(result.Password, ChangePasswordBox.Password)) return;
+
+                MessageDialogResult messageResult = await this.ShowMessageAsync("Неверный пароль.", "Повторите ввод.");
+                ChangeSettingsFlayoutState();
+                ChangePasswordBox.Password = string.Empty;
             }
         }
 
@@ -162,9 +163,15 @@ namespace TrainingJournal
 
         private void OkButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if(FromDatePicker.SelectedDate==null || ToDatePicker.SelectedDate == null)
+            if(FromDatePicker.SelectedDate == null || ToDatePicker.SelectedDate == null)
             {
                 ResultTextBlock.Text = "Не выбран период";
+                return;
+            }
+
+            if (FromDatePicker.SelectedDate > ToDatePicker.SelectedDate)
+            {
+                ResultTextBlock.Text = "Некорректно выбран период";
                 return;
             }
 
@@ -180,13 +187,12 @@ namespace TrainingJournal
             }
             wordDoc.SetSelectionToBegin();
 
-            wordDoc.Selection.Text = "Отчет по данным " + WhatUploadListBox.Text + " за период с " +
-                                     FromDatePicker.SelectedDate.Value.Date + " по " +
-                                     ToDatePicker.SelectedDate.Value.Date + "/n";
+            wordDoc.Selection.Text =
+                $"Отчет по данным {WhatUploadListBox.Text} за период с {FromDatePicker.SelectedDate.Value.Date} по {ToDatePicker.SelectedDate.Value.Date}/n";
 
             switch (WhatUploadListBox.Text)
             {
-                case ("Антропометрия"):
+                case "Антропометрия":
                 {
                     List<UserAntropometry> temp = _session.GetUserAntropometryByPeriod(
                         FromDatePicker.SelectedDate.Value, ToDatePicker.SelectedDate.Value);
@@ -255,7 +261,7 @@ namespace TrainingJournal
 
                     break;
                 }
-                case ("Вес"):
+                case "Вес":
                 {
                     List<Weight> temp = _session.GetWeightByPeriod(
                         FromDatePicker.SelectedDate.Value, ToDatePicker.SelectedDate.Value);

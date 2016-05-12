@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.edmx.sql")]
 
 

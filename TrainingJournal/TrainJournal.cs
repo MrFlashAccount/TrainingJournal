@@ -18,8 +18,9 @@ namespace TrainingJournal
         public string Name { get; set; }
         public string Login { get; set; }
         public System.DateTime Date { get; set; }
-        public byte NumOfSets { get; set; }
-        public byte NumOfReps { get; set; }
+        public int NumOfSets { get; set; }
+        public int NumOfReps { get; set; }
+        public int Weight { get; set; }
         public string Comment { get; set; }
     
         public virtual User User { get; set; }

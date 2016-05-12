@@ -13,10 +13,10 @@ namespace TrainingJournal
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Training_JournalEntities : DbContext
+    public partial class TrainJournalEntities : DbContext
     {
-        public Training_JournalEntities()
-            : base("name=Training_JournalEntities")
+        public TrainJournalEntities()
+            : base("name=TrainJournalEntities")
         {
         }
     
@@ -25,7 +25,6 @@ namespace TrainingJournal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TrainJournal> TrainJournal { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserAntropometry> UserAntropometry { get; set; }

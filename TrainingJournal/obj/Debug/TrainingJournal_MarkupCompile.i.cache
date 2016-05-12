@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\
 TrainingJournal
 none
 false
 DEBUG;TRACE
-C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\App.xaml
-7-2095659542
-2-1237538464
-301077222158
-26675950971
-PageSwitcher.xaml;Views\AddExercise.xaml;Views\Exercise.xaml;Views\Login.xaml;Views\MainMenu.xaml;Views\Registration.xaml;Views\Workspace.xaml;
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\App.xaml
+9-213102054
+3777221219
+29-824794915
+82262671987
+PageSwitcher.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Views\AddExercise.xaml;Views\Exercise.xaml;Views\Login.xaml;Views\MainMenu.xaml;Views\Registration.xaml;Views\Workspace.xaml;
 
-False
+True
 

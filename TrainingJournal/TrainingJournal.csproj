@@ -89,6 +89,18 @@
       <HintPath>..\packages\Northwoods.GoWPF.2.2.2\lib\net46\Northwoods.GoWPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.1.0.0-unstable2100\lib\net45\OxyPlot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.1.0.0-unstable2100\lib\net45\OxyPlot.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot.Xps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.1.0.0-unstable2100\lib\net45\OxyPlot.Xps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -125,32 +137,29 @@
     </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="Switcher.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>TrainJournal.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TrainJournal.Context.cs">
+    <Compile Include="TrainingJournalDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainJournal.Context.tt</DependentUpon>
+      <DependentUpon>TrainingJournalDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingJournalDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingJournalDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="TrainJournal.cs">
-      <DependentUpon>TrainJournal.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TrainJournal.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TrainJournal.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="TrainJournal1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TrainJournal.tt</DependentUpon>
+      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>TrainJournal.tt</DependentUpon>
+      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAntropometry.cs">
-      <DependentUpon>TrainJournal.tt</DependentUpon>
+      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="UserInvalidExeption.cs" />
     <Compile Include="Views\AddExercise.xaml.cs">
@@ -176,13 +185,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Weight.cs">
-      <DependentUpon>TrainJournal.tt</DependentUpon>
+      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="WordDocument.cs" />
     <Compile Include="WordSelection.cs" />
     <Page Include="PageSwitcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AddExercise.xaml">
       <SubType>Designer</SubType>
@@ -233,14 +250,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="TrainJournal.edmx">
+    <EntityDeploy Include="TrainingJournalDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrainJournal.Designer.cs</LastGenOutput>
+      <LastGenOutput>TrainingJournalDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="TrainingJournal_TemporaryKey.pfx" />
-    <None Include="TrainJournal.edmx.diagram">
-      <DependentUpon>TrainJournal.edmx</DependentUpon>
+    <Resource Include="Resources\Entypo.ttf" />
+    <None Include="TrainingJournalDB.edmx.diagram">
+      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
     </None>
+    <None Include="TrainingJournal_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -254,16 +272,19 @@
   <ItemGroup>
     <Resource Include="Images\noAvatar.jpg" />
     <Resource Include="Images\zamery-tela.jpg" />
-    <Content Include="TrainJournal.Context.tt">
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+    <Resource Include="Resources\Entypo-license.txt" />
+    <Content Include="TrainingJournalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainJournal.edmx</DependentUpon>
-      <LastGenOutput>TrainJournal.Context.cs</LastGenOutput>
+      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
+      <LastGenOutput>TrainingJournalDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="TrainJournal.tt">
+    <Content Include="TrainingJournalDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainJournal.edmx</DependentUpon>
-      <LastGenOutput>TrainJournal1.cs</LastGenOutput>
+      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
+      <LastGenOutput>TrainingJournalDB.cs</LastGenOutput>
     </Content>
+    <Content Include="TrainJournal.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

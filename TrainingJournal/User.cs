@@ -26,20 +26,13 @@ namespace TrainingJournal
         }
 
         private string name;
-    
         public string Identificator { get; set; }
         public string Password { get; set; }
-
         public string Name
         {
             get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged("Name");
-            }
+            set { name = value; OnPropertyChanged("Name"); }
         }
-
         public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

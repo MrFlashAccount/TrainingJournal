@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\kjkj\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\TrainJournal.edmx" включено. 
+﻿// Создание кода T4 для модели "D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\TrainingJournalDB.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

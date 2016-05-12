@@ -7,6 +7,15 @@
     xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="TrainingJournal.Views.Workspace"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
         <TabControl x:Name="MainTabs" HorizontalAlignment="Left" Height="600" Margin="0,0,0,0" VerticalAlignment="Top"
                     Width="1000">
@@ -402,6 +411,77 @@
                         </DataGrid>
                     </StackPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Справочник по упражнениям">
+                <DockPanel LastChildFill="True">
+                    <Grid DockPanel.Dock="Top" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Custom:FlipView Height="200"
+                                       Grid.Column="1"
+                                     IsBannerEnabled="True"
+                                     SelectionChanged="FlipView_SelectionChanged"
+                                     Margin="0, 0, 0, 0">
+                            <Custom:FlipView.Items>
+                                <Grid Background="#2E8DEF">
+                                    <Rectangle Margin="0, 0, 0, 0" Width="50" Height="50">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Visual="{StaticResource appbar_align_right}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid Background="#00A600">
+                                    <Rectangle Margin="0, 0, 10, 0" Width="50" Height="50">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Visual="{StaticResource appbar_xbox}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <Grid Background="#BF1E4B">
+                                    <Rectangle Margin="0, 0, 10, 0" Width="50" Height="50">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Visual="{StaticResource appbar_arrow_up_down}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                            </Custom:FlipView.Items>
+                        </Custom:FlipView>
+                    </Grid>
+                    
+
+                    <TreeView Name="NavigationTree" 
+                              DockPanel.Dock="Left"
+                              Width="200">
+                        <TreeViewItem Header="Базовые упражнения">
+                            <TreeViewItem Header="Приседания со штангой" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Жим лежа" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Становая тяга" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Наклонный жим лежа" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Подтягивания на перекладине" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Армейский жим" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Header="Наклоны со штангой" Selected="TreeViewItem_Selected" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Изолирующие упражнения">
+                            <TreeViewItem Header="C-языки">
+                                <TreeViewItem Header="C#" Selected="TreeViewItem_Selected" />
+                                <TreeViewItem Header="C/C++" Selected="TreeViewItem_Selected" />
+                                <TreeViewItem Header="Java" Selected="TreeViewItem_Selected" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Basic">
+                                <TreeViewItem Header="Visual Basic" Selected="TreeViewItem_Selected" />
+                                <TreeViewItem Header="VB.Net" Selected="TreeViewItem_Selected" />
+                                <TreeViewItem Header="PureBasic" Selected="TreeViewItem_Selected" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
+                    <Canvas Name="ContentCanvas">
+                        
+                    </Canvas>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </Grid>

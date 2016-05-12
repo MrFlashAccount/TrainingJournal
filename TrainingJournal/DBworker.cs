@@ -15,7 +15,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     userdata = db.User.FirstOrDefault(p => p.Identificator == userdata.Identificator && p.Password == userdata.Password);
                     if (userdata == null) throw new UserInvalidExeption();
@@ -38,13 +38,13 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     db.User.Add(userdata);
                     db.SaveChanges();
                 }
             }
-            catch
+            catch(Exception e)
             {
                 return false;
             }
@@ -62,7 +62,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     User userToChange = db.User.Find(user.Identificator);
                     userToChange.Name = newName;
@@ -87,7 +87,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     User userToChange = db.User.Find(user.Identificator);
                     userToChange.Password = newPassword;
@@ -106,7 +106,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     User userToChange = db.User.Find(user.Identificator);
                     userToChange.Image = newImage;
@@ -125,7 +125,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return db.TrainJournal.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
@@ -139,7 +139,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     db.TrainJournal.Add(trainJournal);
                     db.SaveChanges();
@@ -156,7 +156,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return db.UserAntropometry.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
@@ -169,7 +169,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return db.UserAntropometry.Where(p => p.Login == loginedUser.Identificator).ToList().Last();
             }
             catch
@@ -182,7 +182,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     db.UserAntropometry.Add(userAntropometry);
                     db.SaveChanges();
@@ -199,7 +199,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return db.Weight.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
@@ -212,7 +212,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     db.Weight.Add(weight);
                     db.SaveChanges();
@@ -229,7 +229,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                 {
                     db.SaveChanges();
                     return true;
@@ -245,7 +245,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return
                         db.UserAntropometry.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
                             .ToList();
@@ -260,7 +260,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return
                         db.Weight.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
                             .ToList();
@@ -275,7 +275,7 @@ namespace TrainingJournal
         {
             try
             {
-                using (Training_JournalEntities db = new Training_JournalEntities())
+                using (TrainJournalEntities db = new TrainJournalEntities())
                     return
                         db.TrainJournal.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
                             .ToList();

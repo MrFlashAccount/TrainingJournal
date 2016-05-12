@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using WPFPageSwitch;
 using UserControl = System.Windows.Controls.UserControl;
 
@@ -62,7 +65,7 @@ namespace TrainingJournal.Views
         {
             if (weight == null) return;
 
-            WeightBackTextBox.Text = weight.Weight1.ToString();
+            WeightBackTextBox.Text = weight.Weight1.ToString(CultureInfo.CurrentCulture);
             FatPercentBackTextBox.Text = weight.FatPercent != null ? weight.FatPercent.ToString() : "<пусто>";
         }
 
@@ -86,17 +89,19 @@ namespace TrainingJournal.Views
             UserAntropometry userAntropometry = new UserAntropometry()
             {
                 Login = _session.LoginedUser.Identificator,
-                Nech = (float)Convert.ToDouble(NeckTextBox.Text),
-                Chest = (float)Convert.ToDouble(ChestTextBox.Text),
-                Arm = (float)Convert.ToDouble(ArmTextBox.Text),
-                Waist = (float)Convert.ToDouble(WaistTextBox.Text),
-                Hip = (float)Convert.ToDouble(HipTextBox.Text),
-                Shin = (float)Convert.ToDouble(ShinTextBox.Text),
+                Nech = (float) Convert.ToDouble(NeckTextBox.Text),
+                Chest = (float) Convert.ToDouble(ChestTextBox.Text),
+                Arm = (float) Convert.ToDouble(ArmTextBox.Text),
+                Waist = (float) Convert.ToDouble(WaistTextBox.Text),
+                Hip = (float) Convert.ToDouble(HipTextBox.Text),
+                Shin = (float) Convert.ToDouble(ShinTextBox.Text),
                 Date = DateTime.Today
             };
             UserAntropometries.Add(userAntropometry);
             FillUserAntropometryHistoryDg();
-            SuccesLabel.Content = !_session.AddUserAntropometry(userAntropometry) ? "Возникла ошибка при сохранении данных" : "Сохранено";
+            SuccesLabel.Content = !_session.AddUserAntropometry(userAntropometry)
+                ? "Возникла ошибка при сохранении данных"
+                : "Сохранено";
         }
 
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
@@ -158,6 +163,29 @@ namespace TrainingJournal.Views
             SuccesWeightLabel.Content = !_session.AddWeight(weight)
                 ? "Возникла ошибка при сохранении данных"
                 : "Сохранено";
+        }
+
+        private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var flipview = (FlipView) sender;
+            switch (flipview.SelectedIndex)
+            {
+                case 0:
+                    flipview.BannerText = "С чего начать новичку?";
+                    break;
+                case 1:
+                    flipview.BannerText = "Узнай как правильно делать замеры тела!";
+                    break;
+                case 2:
+                    flipview.BannerText = "Стань экспертом в области тренинга!";
+                    break;
+            }
+        }
+
+        private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            TreeViewItem tvItem = (TreeViewItem)sender;
+            MessageBox.Show("Выбран узел: " + tvItem.Header);
         }
     }
 }
