@@ -73,12 +73,24 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotMemory.Unit, Version=103.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.dotMemoryUnit.2.2.20160412.92019\lib\dotMemory.Unit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlRenderer.WPF, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WPF.1.5.0.6\lib\net45\HtmlRenderer.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
@@ -131,6 +143,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DBworker.cs" />
+    <Compile Include="HelpPages\BenchPress.xaml.cs">
+      <DependentUpon>BenchPress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ISwitchable.cs" />
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>
@@ -189,6 +204,10 @@
     </Compile>
     <Compile Include="WordDocument.cs" />
     <Compile Include="WordSelection.cs" />
+    <Page Include="HelpPages\BenchPress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageSwitcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,10 +289,21 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\noAvatar.jpg" />
-    <Resource Include="Images\zamery-tela.jpg" />
+    <Resource Include="Images\noAvatar.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Include="Images\zamery-tela.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Resource Include="Resources\WindowsIcons-license.txt" />
     <Resource Include="Resources\Entypo-license.txt" />
+    <Content Include="HTMLPages\BenchPress.html" />
+    <None Include="Images\benchpress2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Images\benchpress1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="TrainingJournalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TrainingJournalDB.edmx</DependentUpon>

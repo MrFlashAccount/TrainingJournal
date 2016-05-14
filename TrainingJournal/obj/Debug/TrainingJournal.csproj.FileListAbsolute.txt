@@ -99,3 +99,15 @@ D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Deb
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\OxyPlot.Xps.xml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Resources\Icons.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Resources\IconsNonShared.baml
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\BenchPress.g.cs
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\BenchPress.baml
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.dll
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.WPF.dll
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.pdb
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.WPF.pdb
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\dotMemory.Unit.dll
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\dotMemory.Unit.xml
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\Images\zamery-tela.jpg
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\Images\benchpress2.jpg
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\Images\benchpress1.jpg

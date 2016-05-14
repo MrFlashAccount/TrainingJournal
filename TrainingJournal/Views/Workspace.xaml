@@ -4,7 +4,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:TrainingJournal.Views"
-    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="TrainingJournal.Views.Workspace"
+    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:helpPages="clr-namespace:TrainingJournal.HelpPages"
+    x:Class="TrainingJournal.Views.Workspace"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="1000">
 
@@ -452,10 +454,9 @@
                         </Custom:FlipView>
                     </Grid>
                     
-
                     <TreeView Name="NavigationTree" 
                               DockPanel.Dock="Left"
-                              Width="200">
+                              Width="200" Margin="0,0,0,10">
                         <TreeViewItem Header="Базовые упражнения">
                             <TreeViewItem Header="Приседания со штангой" Selected="TreeViewItem_Selected" />
                             <TreeViewItem Header="Жим лежа" Selected="TreeViewItem_Selected" />
@@ -478,9 +479,13 @@
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeView>
-                    <Canvas Name="ContentCanvas">
-                        
-                    </Canvas>
+                    <Grid>
+                        <ScrollViewer CanContentScroll="True"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Margin="0,0,0,10" Height="340">
+                            <helpPages:BenchPress DataContext="{Binding}"/>
+                        </ScrollViewer>
+                    </Grid>
                 </DockPanel>
             </TabItem>
         </TabControl>

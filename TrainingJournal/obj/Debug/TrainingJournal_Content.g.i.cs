@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/benchpress.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.edmx.sql")]

@@ -43,6 +43,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dotMemory.Unit.dll" size="53760">
+      <assemblyIdentity name="dotMemory.Unit" version="103.0.0.0" publicKeyToken="1010A0D8D6380325" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>32PgE2tyN8ZpMh5d/L/iFsbFfWlzJb3ynpB0Nff8L9A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.dll" size="5196496">
       <assemblyIdentity name="EntityFramework" version="6.0.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -87,6 +99,30 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>W3trnNG+6SEDSZwWlOEESbxCMBibvlThZZmytNe33y8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlRenderer.dll" size="221696">
+      <assemblyIdentity name="HtmlRenderer" version="1.5.0.5" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>24PfjnyHf/sJFsFMmtbTH9TCfKqM9w/ueA9v7hWoFkA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlRenderer.WPF.dll" size="48640">
+      <assemblyIdentity name="HtmlRenderer.WPF" version="1.5.0.6" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>pSY8agN1i8nx8GN8H1/wzjAI1cKLaa2DoKoLQBSyavM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -163,14 +199,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3184088">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3169752">
       <assemblyIdentity name="TrainingJournal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CcijfE4x01gPYKYQDJ3v2YgYpUnR1SNLLLdT9ptgqxI=</dsig:DigestValue>
+        <dsig:DigestValue>P/WIajfXy8AYhDlaTJaJCUClpmEpaZnKy6931q31bUM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -181,6 +217,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>jayg1d2GP9ey/ae/FzYplzd+YeB9ucl0FFuZc6V/5JQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\BenchPress.html" size="13470">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>tcslnx3U/jB/v7NQXPeKynRjsumaVkE3TVvzT9wuWdE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TrainingJournal.exe.config" size="1976">
