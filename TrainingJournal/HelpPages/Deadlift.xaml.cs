@@ -7,22 +7,23 @@ using System.Windows.Controls;
 namespace TrainingJournal.HelpPages
 {
     /// <summary>
-    /// Логика взаимодействия для Squat.xaml
+    /// Логика взаимодействия для Deadlift.xaml
     /// </summary>
-    public partial class BenchPress : UserControl
+    public partial class Deadlift : UserControl
     {
-        private string _text;
-
-        public BenchPress()
+        public Deadlift()
         {
             InitializeComponent();
             ReadData();
             Content.Text = _text;
         }
 
+        private string _text;
+
+        
         private void ReadData()
         {
-            string file = @"HtmlPages/BenchPress.html";
+            string file = @"HtmlPages/Deadlift.html";
             try
             {
                 using (StreamReader sr = new StreamReader(file))

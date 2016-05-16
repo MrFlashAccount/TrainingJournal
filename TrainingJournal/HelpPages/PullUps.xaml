@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TrainingJournal.HelpPages.BenchPress"
+﻿<UserControl x:Class="TrainingJournal.HelpPages.PullUps"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -28,7 +28,6 @@
                 </controls:FlipView.Items>
             </controls:FlipView>
             <Button Content="Посмотреть видео" Click="WatchVideo_OnClick"></Button>
-
         </StackPanel>
         <wpf:HtmlPanel Name="Content" Text="{Binding _text}" Grid.Column="1" Margin="0,0,0,10"/>
     </Grid>

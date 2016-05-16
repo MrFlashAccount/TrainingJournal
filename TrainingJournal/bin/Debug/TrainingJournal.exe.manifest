@@ -199,14 +199,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3169752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3578328">
       <assemblyIdentity name="TrainingJournal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>P/WIajfXy8AYhDlaTJaJCUClpmEpaZnKy6931q31bUM=</dsig:DigestValue>
+        <dsig:DigestValue>DTJ8HPAzO8qP5NIJZGKsFiDxhx1V4lK8BFK/NfVWdnA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -226,6 +226,96 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>tcslnx3U/jB/v7NQXPeKynRjsumaVkE3TVvzT9wuWdE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\BicepsCurl.html" size="4709">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qPs/lhWMC5FfhTctHNiau/+4se79m04135NrjrOhato=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\Deadlift.html" size="10061">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>FkcZ/yEY+NGhSri+D93SRyMwA6IKArDD4ECcuOQO7ro=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\FlyeMotion.html" size="10426">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rkPuXmCrS0BAT+JDyoYyJpASarqVhnFF9Itac6rUzi0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\GoodMornings.html" size="5593">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>noa0acGQVUmIHIdRqlIFVdaww54GBNq9KuwOrGl1+Wk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\InclineBenchPress.html" size="8137">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>EImk1QuDFJleYOnpzZex31Y/Ugpvupc7upFxEeloKnk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\LegExtension.html" size="4569">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>rkmSqDuo31oK7vmao5J+9wWjtghN7tl3wmP/zeYDrD0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\LyingTricepsExtensions.html" size="7256">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xp61446dxMswifirZQLas7lhDRJY+q2XVRU/TzYjDJc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\MilitaryPress.html" size="4855">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>NZu9B6GF/XJUx70plPfs91bPAXn6wNNGrPoaaQYbBg0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\PullUps.html" size="9553">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>92grupkBj2YSs2GRRMQZ9s4HU0EDoBA/MYexTDG6bAw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\Squat.html" size="8480">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>d/ed6WFT01kr+7WkYSdWgyPLGJLNidGxPZO5lNzQf0w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TrainingJournal.exe.config" size="1976">

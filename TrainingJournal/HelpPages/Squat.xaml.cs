@@ -9,11 +9,11 @@ namespace TrainingJournal.HelpPages
     /// <summary>
     /// Логика взаимодействия для Squat.xaml
     /// </summary>
-    public partial class BenchPress : UserControl
+    public partial class Squat : UserControl
     {
         private string _text;
 
-        public BenchPress()
+        public Squat()
         {
             InitializeComponent();
             ReadData();
@@ -22,7 +22,7 @@ namespace TrainingJournal.HelpPages
 
         private void ReadData()
         {
-            string file = @"HtmlPages/BenchPress.html";
+            string file = @"HtmlPages/Squat.html";
             try
             {
                 using (StreamReader sr = new StreamReader(file))
@@ -30,9 +30,9 @@ namespace TrainingJournal.HelpPages
                     _text = sr.ReadToEnd();
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(e.ToString());
             }
         }
 
@@ -40,7 +40,7 @@ namespace TrainingJournal.HelpPages
         {
             try
             {
-                Process.Start("https://youtu.be/sbB_0N_AfHg");
+                Process.Start("https://youtu.be/Om8D3BkKPC4");
             }
             catch (Exception ex)
             {

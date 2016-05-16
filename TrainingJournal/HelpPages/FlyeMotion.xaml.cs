@@ -7,13 +7,13 @@ using System.Windows.Controls;
 namespace TrainingJournal.HelpPages
 {
     /// <summary>
-    /// Логика взаимодействия для Squat.xaml
+    /// Логика взаимодействия для FlyeMotion.xaml
     /// </summary>
-    public partial class BenchPress : UserControl
+    public partial class FlyeMotion : UserControl
     {
         private string _text;
 
-        public BenchPress()
+        public FlyeMotion()
         {
             InitializeComponent();
             ReadData();
@@ -22,7 +22,7 @@ namespace TrainingJournal.HelpPages
 
         private void ReadData()
         {
-            string file = @"HtmlPages/BenchPress.html";
+            string file = @"HtmlPages/FlyeMotion.html";
             try
             {
                 using (StreamReader sr = new StreamReader(file))

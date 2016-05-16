@@ -7,13 +7,13 @@ using System.Windows.Controls;
 namespace TrainingJournal.HelpPages
 {
     /// <summary>
-    /// Логика взаимодействия для Squat.xaml
+    /// Логика взаимодействия для LyingTricepsExtension.xaml
     /// </summary>
-    public partial class BenchPress : UserControl
+    public partial class LyingTricepsExtension : UserControl
     {
         private string _text;
 
-        public BenchPress()
+        public LyingTricepsExtension()
         {
             InitializeComponent();
             ReadData();
@@ -22,7 +22,7 @@ namespace TrainingJournal.HelpPages
 
         private void ReadData()
         {
-            string file = @"HtmlPages/BenchPress.html";
+            string file = @"HtmlPages/LyingTricepsExtensions.html";
             try
             {
                 using (StreamReader sr = new StreamReader(file))

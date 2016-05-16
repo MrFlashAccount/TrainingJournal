@@ -7,13 +7,13 @@ using System.Windows.Controls;
 namespace TrainingJournal.HelpPages
 {
     /// <summary>
-    /// Логика взаимодействия для Squat.xaml
+    /// Логика взаимодействия для GoodMornings.xaml
     /// </summary>
-    public partial class BenchPress : UserControl
+    public partial class GoodMornings : UserControl
     {
         private string _text;
 
-        public BenchPress()
+        public GoodMornings()
         {
             InitializeComponent();
             ReadData();
@@ -22,7 +22,7 @@ namespace TrainingJournal.HelpPages
 
         private void ReadData()
         {
-            string file = @"HtmlPages/BenchPress.html";
+            string file = @"HtmlPages/GoodMornings.html";
             try
             {
                 using (StreamReader sr = new StreamReader(file))

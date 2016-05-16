@@ -146,6 +146,36 @@
     <Compile Include="HelpPages\BenchPress.xaml.cs">
       <DependentUpon>BenchPress.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelpPages\BicepsCurl.xaml.cs">
+      <DependentUpon>BicepsCurl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\Deadlift.xaml.cs">
+      <DependentUpon>Deadlift.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\FlyeMotion.xaml.cs">
+      <DependentUpon>FlyeMotion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\GoodMornings.xaml.cs">
+      <DependentUpon>GoodMornings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\InclineBenchPress.xaml.cs">
+      <DependentUpon>InclineBenchPress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\LegExtension.xaml.cs">
+      <DependentUpon>LegExtension.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\LyingTricepsExtension.xaml.cs">
+      <DependentUpon>LyingTricepsExtension.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\MilitaryPress.xaml.cs">
+      <DependentUpon>MilitaryPress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\PullUps.xaml.cs">
+      <DependentUpon>PullUps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HelpPages\Squat.xaml.cs">
+      <DependentUpon>Squat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ISwitchable.cs" />
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>
@@ -205,6 +235,46 @@
     <Compile Include="WordDocument.cs" />
     <Compile Include="WordSelection.cs" />
     <Page Include="HelpPages\BenchPress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\BicepsCurl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\Deadlift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\FlyeMotion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\GoodMornings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\InclineBenchPress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\LegExtension.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\LyingTricepsExtension.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\MilitaryPress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\PullUps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpPages\Squat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,13 +367,54 @@
     </None>
     <Resource Include="Resources\WindowsIcons-license.txt" />
     <Resource Include="Resources\Entypo-license.txt" />
-    <Content Include="HTMLPages\BenchPress.html" />
+    <Content Include="HTMLPages\BenchPress.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Images\benchpress2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Images\benchpress1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Images\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="HTMLPages\BicepsCurl.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\Deadlift.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\FlyeMotion.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\GoodMornings.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\InclineBenchPress.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\LegExtension.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\LyingTricepsExtensions.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\MilitaryPress.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\PullUps.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTMLPages\Squat.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TrainingJournalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TrainingJournalDB.edmx</DependentUpon>

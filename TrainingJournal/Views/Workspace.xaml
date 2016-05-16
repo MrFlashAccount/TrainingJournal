@@ -3,9 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:TrainingJournal.Views"
-    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
-    xmlns:helpPages="clr-namespace:TrainingJournal.HelpPages"
+    xmlns:custom="http://metro.mahapps.com/winfx/xaml/controls"
     x:Class="TrainingJournal.Views.Workspace"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="1000">
@@ -423,67 +421,59 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Custom:FlipView Height="200"
+                        <custom:FlipView Height="200"
                                        Grid.Column="1"
                                      IsBannerEnabled="True"
                                      SelectionChanged="FlipView_SelectionChanged"
-                                     Margin="0, 0, 0, 0">
-                            <Custom:FlipView.Items>
+                                     Margin="0, 0, 0, 0" IsManipulationEnabled="True" Width="967">
+                            <custom:FlipView.Items>
                                 <Grid Background="#2E8DEF">
-                                    <Rectangle Margin="0, 0, 0, 0" Width="50" Height="50">
-                                        <Rectangle.Fill>
-                                            <VisualBrush Visual="{StaticResource appbar_align_right}" />
-                                        </Rectangle.Fill>
-                                    </Rectangle>
+                                    <Image Source="../Images/2.jpg"/>
                                 </Grid>
                                 <Grid Background="#00A600">
-                                    <Rectangle Margin="0, 0, 10, 0" Width="50" Height="50">
-                                        <Rectangle.Fill>
-                                            <VisualBrush Visual="{StaticResource appbar_xbox}" />
-                                        </Rectangle.Fill>
-                                    </Rectangle>
+                                    <Image Source="../Images/3.jpg"/>
                                 </Grid>
                                 <Grid Background="#BF1E4B">
-                                    <Rectangle Margin="0, 0, 10, 0" Width="50" Height="50">
-                                        <Rectangle.Fill>
-                                            <VisualBrush Visual="{StaticResource appbar_arrow_up_down}" />
-                                        </Rectangle.Fill>
-                                    </Rectangle>
+                                    <Image Source="../Images/1.jpg"/>
                                 </Grid>
-                            </Custom:FlipView.Items>
-                        </Custom:FlipView>
+                            </custom:FlipView.Items>
+                        </custom:FlipView>
                     </Grid>
                     
                     <TreeView Name="NavigationTree" 
                               DockPanel.Dock="Left"
                               Width="200" Margin="0,0,0,10">
                         <TreeViewItem Header="Базовые упражнения">
-                            <TreeViewItem Header="Приседания со штангой" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Жим лежа" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Становая тяга" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Наклонный жим лежа" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Подтягивания на перекладине" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Армейский жим" Selected="TreeViewItem_Selected" />
-                            <TreeViewItem Header="Наклоны со штангой" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="Squat" Header="Приседания со штангой" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="BenchPress" Header="Жим лежа" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="Deadlift" Header="Становая тяга" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="InclineBenchPress" Header="Жим лежа на наклонной скамье" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="PullUps" Header="Подтягивания на перекладине" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="MilitaryPress" Header="Армейский жим" Selected="TreeViewItem_Selected" />
+                            <TreeViewItem Name="GoodMornings" Header="Наклоны со штангой" Selected="TreeViewItem_Selected" />
                         </TreeViewItem>
                         <TreeViewItem Header="Изолирующие упражнения">
-                            <TreeViewItem Header="C-языки">
-                                <TreeViewItem Header="C#" Selected="TreeViewItem_Selected" />
-                                <TreeViewItem Header="C/C++" Selected="TreeViewItem_Selected" />
-                                <TreeViewItem Header="Java" Selected="TreeViewItem_Selected" />
-                            </TreeViewItem>
-                            <TreeViewItem Header="Basic">
-                                <TreeViewItem Header="Visual Basic" Selected="TreeViewItem_Selected" />
-                                <TreeViewItem Header="VB.Net" Selected="TreeViewItem_Selected" />
-                                <TreeViewItem Header="PureBasic" Selected="TreeViewItem_Selected" />
-                            </TreeViewItem>
+                            <TreeViewItem Name="BicepsCurl" Header="Подъем штанги на бицепс" Selected="TreeViewItem_Selected"/>
+                            <TreeViewItem Name="LyingTricepsExtensions" Header="Французский жим лежа" Selected="TreeViewItem_Selected"/>
+                            <TreeViewItem Name="FlyeMotion" Header="Разводка гантелей лежа" Selected="TreeViewItem_Selected"/>
+                            <TreeViewItem Name="LegExtension" Header="Разгибания ног" Selected="TreeViewItem_Selected"/>
                         </TreeViewItem>
                     </TreeView>
+                    
                     <Grid>
-                        <ScrollViewer CanContentScroll="True"
+                        <ScrollViewer Name="ContentScrollViewer" 
+                                      CanContentScroll="True"
                                       VerticalScrollBarVisibility="Auto"
                                       Margin="0,0,0,10" Height="340">
-                            <helpPages:BenchPress DataContext="{Binding}"/>
+                            <Grid Name="ContentGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Выберите пункт меню</TextBlock>
+                            </Grid>
                         </ScrollViewer>
                     </Grid>
                 </DockPanel>

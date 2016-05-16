@@ -5,8 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
+using TrainingJournal.HelpPages;
 using WPFPageSwitch;
-using UserControl = System.Windows.Controls.UserControl;
 
 namespace TrainingJournal.Views
 {
@@ -185,7 +185,54 @@ namespace TrainingJournal.Views
         private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
         {
             TreeViewItem tvItem = (TreeViewItem)sender;
-            MessageBox.Show("Выбран узел: " + tvItem.Header);
+
+            switch (tvItem.Name)
+            {
+                case "Squat":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Squat());
+                    break;
+                case "BenchPress":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new BenchPress());
+                    break;
+                case "Deadlift":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new Deadlift());
+                    break;
+                case "InclineBenchPress":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new InclineBenchPress());
+                    break;
+                case "PullUps":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new PullUps());
+                    break;
+                case "MilitaryPress":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new MilitaryPress());
+                    break;
+                case "GoodMornings":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new GoodMornings());
+                    break;
+                case "BicepsCurl":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new BicepsCurl());
+                    break;
+                case "LyingTricepsExtensions":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new LyingTricepsExtension());
+                    break;
+                case "FlyeMotion":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new FlyeMotion());
+                    break;
+                case "LegExtension":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new LegExtension());
+                    break;
+            }
         }
     }
 }
