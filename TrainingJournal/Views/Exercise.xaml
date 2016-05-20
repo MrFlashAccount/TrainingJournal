@@ -3,81 +3,118 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TrainingJournal.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="1000">
-    
-    <StackPanel>
-        <Grid Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            
-        <TextBox x:Name="TitleTextBlock"
-                   Grid.Column="0"
-                   FontSize="18"
-                   Margin="5"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap" 
-                   Text="Sample"/>
-            <Button Name="DeleteButton"
-                    Margin="5"
-                    Content="удалить"
-                    Grid.Column="1"
-                    Click="DeleteButton_OnClick"/>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid>
+             d:DesignHeight="60" d:DesignWidth="1000">
+
+    <Border Margin="2" BorderBrush="CornflowerBlue" BorderThickness="1">
+        <StackPanel Margin="0,0,0,-1">
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="NumApproachTextBlock"
-                   Grid.Column="0"
+                <TextBox x:Name="TitleTextBlock"
+                         Grid.Column="0"
+                         FontSize="18"
                          Margin="5"
-                   FontSize="20"
-                   HorizontalAlignment="right"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap" 
-                   Text="Sample" TextChanged="NumApproachTextBlock_OnTextChanged"/>
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Top"
+                         TextWrapping="Wrap"
+                         Text="Sample" />
 
-                <TextBlock
-                   Grid.Column="1"
-                   Margin="5"
-                   FontSize="20"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap" 
-                   Text="x"/>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <TextBox x:Name="NumRepsTextBlock"
-                   Grid.Column="2"
-                         Margin="5"
-                   FontSize="20"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap" 
-                   Text="Sample" TextChanged="NumRepsTextBlock_TextChanged"/>
+                    <TextBox Name="WeightTextBlock"
+                             Grid.Column="0"
+                             Margin="5"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             TextWrapping="Wrap"
+                             Text="Sample" TextChanged="WeightTextBlock_TextChanged" />
+
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="NumApproachTextBlock"
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 FontSize="20"
+                                 HorizontalAlignment="right"
+                                 VerticalAlignment="Top"
+                                 TextWrapping="Wrap"
+                                 Text="Sample" TextChanged="NumApproachTextBlock_OnTextChanged" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="5"
+                            FontSize="20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            TextWrapping="Wrap"
+                            Text="x" />
+
+                        <TextBox x:Name="NumRepsTextBlock"
+                                 Grid.Column="2"
+                                 Margin="5"
+                                 FontSize="20"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 TextWrapping="Wrap"
+                                 Text="Sample" TextChanged="NumRepsTextBlock_TextChanged" />
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Text="Тоннаж"
+                                   Grid.Column="1"
+                               Margin="5"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               TextWrapping="Wrap" />
+                        <TextBox x:Name="TonnageTextBlock"
+                             Grid.Column="2"
+                             FontSize="20"
+                             Margin="5"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             TextWrapping="Wrap"
+                             Text="Sample" />
+                    </Grid>
+                </Grid>
+
+
+                <Button Name="DeleteButton"
+                        Margin="5"
+                        Content="удалить"
+                        Grid.Column="3"
+                        Click="DeleteButton_OnClick" BorderThickness="0" />
             </Grid>
-
-           
-            <TextBox x:Name="TonnageTextBlock"
-                   Grid.Column="1"
-                   FontSize="20"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   TextWrapping="Wrap" 
-                   Text="Sample"/>
-        </Grid>
-    </StackPanel>
-
+        </StackPanel>
+    </Border>
 </UserControl>

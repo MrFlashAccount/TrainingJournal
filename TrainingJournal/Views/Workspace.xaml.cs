@@ -13,9 +13,9 @@ namespace TrainingJournal.Views
     /// <summary>
     /// Логика взаимодействия для Workspace.xaml
     /// </summary>
-    public partial class Workspace : UserControl, ISwitchable
+    public partial class Workspace : ISwitchable
     {
-        private Session _session;
+        private readonly Session _session;
         public List<UserAntropometry> UserAntropometries;
         public List<Weight> UserWeights;
         public List<TrainJournal> TrainJournals;
@@ -69,11 +69,28 @@ namespace TrainingJournal.Views
             FatPercentBackTextBox.Text = weight.FatPercent != null ? weight.FatPercent.ToString() : "<пусто>";
         }
 
-        private void FillTrainJournalDg()
+        private void FillTrainJournalContent()
         {
-            TrainJournalDatagrid.ItemsSource = null;
-            TrainJournalDatagrid.ItemsSource = TrainJournals.ToArray().Reverse().ToList();
+            ExerciseStackPanel.Children.Clear();
+
+            try
+            {
+                foreach (DateTime date in SelectUniqueDates())
+                {
+                    DayExpander dex = new DayExpander(_session, date);
+                    dex.AddExercises(SelectTrainJournlasByDate(date));
+                    ExerciseStackPanel?.Children.Add(dex);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
+
+        private List<DateTime> SelectUniqueDates() => TrainJournals.Select(x => x.Date).Distinct().ToList();
+
+        private List<TrainJournal> SelectTrainJournlasByDate(DateTime date) => TrainJournals.Where(x => x.Date == date).ToList();
 
         #region ISwitchable Members
 
@@ -119,6 +136,7 @@ namespace TrainingJournal.Views
                 trainJournal.Date = DateTime.Today;
                 trainJournal.NumOfSets = byte.Parse(addExercise.NumOfSetsTextBox.Text);
                 trainJournal.NumOfReps = byte.Parse(addExercise.NumOfRepsTextBox.Text);
+                trainJournal.Weight = int.Parse(addExercise.WeightTextBox.Text);
             }
             catch
             {
@@ -126,7 +144,7 @@ namespace TrainingJournal.Views
             }
             TrainJournals.Add(trainJournal);
             if (!_session.AddExersice(trainJournal)) MessageBox.Show("Error");
-            FillTrainJournalDg();
+            FillTrainJournalContent();
         }
 
         private void JournalTabItem_Loaded(object sender, RoutedEventArgs e)
@@ -134,15 +152,9 @@ namespace TrainingJournal.Views
             CurrentDateTextBlock.Text = DateTime.Today.ToString("D");
 
             TrainJournals = _session.GetTrainJournal();
-            FillTrainJournalDg();
+            FillTrainJournalContent();
 
             #region Next Iteration
-
-            //foreach (var trainjournal in _session.TrainJournals)
-            //{
-            //    Exercise uc = new Exercise(_session, trainjournal);
-            //    ExerciseStackPanel.Children.Add(uc);
-            //}
 
             #endregion
 

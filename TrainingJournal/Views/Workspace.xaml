@@ -22,7 +22,7 @@
             <TabItem Header="Профиль">
                 <ScrollViewer CanContentScroll="True"
                               VerticalScrollBarVisibility="Auto"
-                              Margin="0,0,0,30">
+                              Margin="10,0,-10,30">
                     <Grid>
                         <StackPanel>
                             <Grid>
@@ -42,23 +42,26 @@
                                            VerticalAlignment="Top"
                                            Width="240" />
                             </Grid>
-                            <Expander Name="BodyMeasurmentExpander"
+                            <Expander x:Name="BodyMeasurmentExpander"
                                       IsExpanded="False"
-                                      Margin="0,10,0,0"
+                                      Margin="0,10"
                                       Header="Замеры тела">
                                 <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
                                     <GroupBox x:Name="MeasurementGroupBox"
-                                              Header="Замеры тела"
-                                              HorizontalAlignment="Left"
-                                              Margin="203,4,0,0"
-                                              VerticalAlignment="Top"
-                                              Height="287" Width="400">
-                                        <Grid HorizontalAlignment="Left" Height="257" Margin="-5,-7,-7,-29"
-                                              VerticalAlignment="Top" Width="400">
+                            			Header="Замеры тела"
+                            			HorizontalAlignment="Left"
+                            			Margin="10,0,0,0"
+                            			Grid.Column="0" Height="291" VerticalAlignment="Top">
+                                        <Grid HorizontalAlignment="Left"
+                            				VerticalAlignment="Top">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="100" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -68,163 +71,158 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
 
                                             <Label x:Name="NeckLabel"
-                                                   Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Шея" />
+                            					Grid.Row="1"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Шея" />
                                             <TextBox x:Name="NeckTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="1"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="NeckBackTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="1"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Label x:Name="ChestLabel"
-                                                   Grid.Row="2"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Грудь" />
+                            					Grid.Row="2"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Грудь" />
                                             <TextBox x:Name="ChestTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="2"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="ChestBackTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="2"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Label x:Name="ArmLabel"
-                                                   Grid.Row="3"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Руки" />
+                            					Grid.Row="3"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Руки" />
                                             <TextBox x:Name="ArmTextBox"
-                                                     Grid.Row="3"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="3"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="ArmBackTextBox"
-                                                     Grid.Row="3"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="3"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Label x:Name="WaistLabel"
-                                                   Grid.Row="4"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Талия" />
+                            					Grid.Row="4"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Талия" />
                                             <TextBox x:Name="WaistTextBox"
-                                                     Grid.Row="4"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="4"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="WaistBackTextBox"
-                                                     Grid.Row="4"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="4"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Label x:Name="HipLabel"
-                                                   Grid.Row="5"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Бедра" />
+                            					Grid.Row="5"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Бедра" />
                                             <TextBox x:Name="HipTextBox"
-                                                     Grid.Row="5"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="5"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="HipBackTextBox"
-                                                     Grid.Row="5"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="5"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Label x:Name="ShinLabel"
-                                                   Grid.Row="6"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Голень" />
+                            					Grid.Row="6"
+                            					Grid.Column="0"
+                            					Margin="20,5"
+                            					VerticalAlignment="Top"
+                            					Content="Голень" />
                                             <TextBox x:Name="ShinTextBox"
-                                                     Grid.Row="6"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
+                            					Grid.Row="6"
+                            					Grid.Column="1"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" />
                                             <TextBox x:Name="ShinBackTextBox"
-                                                     Grid.Row="6"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                            					Grid.Row="6"
+                            					Grid.Column="2"
+                            					Margin="5,5,5,5"
+                            					VerticalAlignment="Top" IsReadOnly="True" />
 
                                             <Button x:Name="SaveButton"
-                                                    Content="Сохранить"
-                                                    Grid.Column="1"
-                                                    Grid.Row="7"
-                                                    HorizontalAlignment="Left"
-                                                    Margin="10,10,0,0"
-                                                    VerticalAlignment="Top" Width="80" Click="SaveButton_Click" />
+                            					Content="Сохранить"
+                            					Grid.Column="1"
+                            					Grid.Row="7"
+                            					HorizontalAlignment="Left"
+                            					Margin="10,10,0,0"
+                            					VerticalAlignment="Top" Width="80" Click="SaveButton_Click" />
                                             <Label x:Name="SuccesLabel"
-                                                   Content=""
-                                                   Grid.Column="2"
-                                                   HorizontalAlignment="Left"
-                                                   Margin="10,10,0,0"
-                                                   Grid.Row="7"
-                                                   VerticalAlignment="Top"
-                                                   RenderTransformOrigin="-1.211,0.885" />
+                            					Content=""
+                            					Grid.Column="2"
+                            					HorizontalAlignment="Left"
+                            					Margin="10,10,0,0"
+                            					Grid.Row="7"
+                            					VerticalAlignment="Top"
+                            					RenderTransformOrigin="-1.211,0.885" />
                                         </Grid>
                                     </GroupBox>
 
-                                    <Image x:Name="MeasurementImage"
-                                           Source="../Images/zamery-tela.jpg"
-                                           Height="287"
-                                           Margin="607,4,204,0"
-                                           VerticalAlignment="Top" Stretch="Fill" />
-
-                                    <DataGrid Name="AntropometryHistoryDatagrid"
-                                              Margin="203,296,203,0"
-                                              IsReadOnly="True"
-                                              AutoGenerateColumns="False"
-                                              CanUserDeleteRows="False"
-                                              CanUserAddRows="False" Height="243" VerticalAlignment="Top">
+                                    <DataGrid x:Name="AntropometryHistoryDatagrid"
+                            			IsReadOnly="True"
+                            			AutoGenerateColumns="False"
+                            			CanUserDeleteRows="False"
+                            			CanUserAddRows="False" Height="285" 
+                            			VerticalAlignment="Top"
+                            			Grid.Column="1">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Дата"
-                                                                Width="*"
-                                                                Binding="{Binding Date, StringFormat=dd-MM-yyyy}" />
+                            					Width="*"
+                            					Binding="{Binding Date, StringFormat=dd-MM-yyyy}" />
                                             <DataGridTextColumn Header="Шея"
-                                                                Width="*"
-                                                                Binding="{Binding Nech}" />
+                            					Width="*"
+                            					Binding="{Binding Nech}" />
                                             <DataGridTextColumn Header="Грудь"
-                                                                Width="*"
-                                                                Binding="{Binding Chest}" />
+                            					Width="*"
+                            					Binding="{Binding Chest}" />
                                             <DataGridTextColumn Header="Руки"
-                                                                Width="*"
-                                                                Binding="{Binding Arm}" />
+                            					Width="*"
+                            					Binding="{Binding Arm}" />
                                             <DataGridTextColumn Header="Талия"
-                                                                Width="*"
-                                                                Binding="{Binding Waist}" />
+                            					Width="*"
+                            					Binding="{Binding Waist}" />
                                             <DataGridTextColumn Header="Бедра"
-                                                                Width="*"
-                                                                Binding="{Binding Hip}" />
+                            					Width="*"
+                            					Binding="{Binding Hip}" />
                                             <DataGridTextColumn Header="Голень"
-                                                                Width="*"
-                                                                Binding="{Binding Shin}" />
+                            					Width="*"
+                            					Binding="{Binding Shin}" />
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Grid>
@@ -347,69 +345,39 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-
+                        
+                        <TextBlock Grid.Column="0"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0"
+                                   Text="Сегодня:"></TextBlock>
                         <TextBlock Name="CurrentDateTextBlock"
-                                   Grid.Column="0"
+                                   Grid.Column="1"
                                    VerticalAlignment="Center"
                                    Margin="10,0"
                                    Text="Дата" />
-
+                        <DatePicker Name="PickDateDatePicker" 
+                                    Grid.Column="2"
+                                    VerticalAlignment="Center"
+                                    Margin="10,0" custom:TextBoxHelper.Watermark="Перейти к дате"/>
                         <Button Name="AddButton"
-                                Grid.Column="3"
+                                Grid.Column="4"
                                 Margin="10,0"
                                 Content="Добавить"
                                 Click="AddButton_OnClick" Height="26" VerticalAlignment="Bottom" />
                     </Grid>
 
-                    <StackPanel Name="ExerciseStackPanel"
-                                Grid.Row="1"
-                                CanVerticallyScroll="True"
-                                ScrollViewer.CanContentScroll="True">
-
-                        <DataGrid Name="TrainJournalDatagrid"
-                                              Margin="10"
-                                              IsReadOnly="False"
-                                              AutoGenerateColumns="False"
-                                              CanUserDeleteRows="False"
-                                              CanUserAddRows="False" 
-                                  Height="510" 
-                                  VerticalAlignment="Top">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Дата"
-                                                                Width="0.48*"
-                                                                Binding="{Binding Date, StringFormat=dd-MM-yyyy}"
-                                                    IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Название упражнения"
-                                                                Width="1.5*"
-                                                                Binding="{Binding Name}" CanUserReorder="False"
-                                                    IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Вес"
-                                                                Width="0.5*"
-                                                                Binding="{Binding Weight}"
-                                                    IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Подходы"
-                                                                Width="0.7*"
-                                                                Binding="{Binding NumOfSets}"
-                                                    IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Повторы"
-                                                                Width="0.7*"
-                                                                Binding="{Binding NumOfReps}"
-                                                    IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Тоннаж"
-                                                                Width="*"
-                                                                Binding="{Binding Hip}" 
-                                                     IsReadOnly="True"/>
-
-                                <DataGridTextColumn Header="Комментарий"
-                                                                Width="1.5*"
-                                                                Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                                                IsReadOnly="False"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
+                    <ScrollViewer Name="ExerciseScrollViewer"
+                                  Grid.Row="1"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Margin="0,0,0,30">
+                        <StackPanel Name="ExerciseStackPanel"
+                                    CanVerticallyScroll="True"
+                                    ScrollViewer.CanContentScroll="True"/>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Справочник по упражнениям">
@@ -439,7 +407,7 @@
                             </custom:FlipView.Items>
                         </custom:FlipView>
                     </Grid>
-                    
+
                     <TreeView Name="NavigationTree" 
                               DockPanel.Dock="Left"
                               Width="200" Margin="0,0,0,10">
@@ -459,7 +427,7 @@
                             <TreeViewItem Name="LegExtension" Header="Разгибания ног" Selected="TreeViewItem_Selected"/>
                         </TreeViewItem>
                     </TreeView>
-                    
+
                     <Grid>
                         <ScrollViewer Name="ContentScrollViewer" 
                                       CanContentScroll="True"

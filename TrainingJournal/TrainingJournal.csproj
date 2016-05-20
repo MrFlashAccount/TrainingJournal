@@ -210,6 +210,9 @@
     <Compile Include="Views\AddExercise.xaml.cs">
       <DependentUpon>AddExercise.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DayExpander.xaml.cs">
+      <DependentUpon>DayExpander.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Exercise.xaml.cs">
       <DependentUpon>Exercise.xaml</DependentUpon>
     </Compile>
@@ -291,6 +294,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AddExercise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DayExpander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
