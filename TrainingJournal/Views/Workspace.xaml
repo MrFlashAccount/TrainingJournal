@@ -393,7 +393,9 @@
                                        Grid.Column="1"
                                      IsBannerEnabled="True"
                                      SelectionChanged="FlipView_SelectionChanged"
-                                     Margin="0, 0, 0, 0" IsManipulationEnabled="True" Width="967">
+                                     IsManipulationEnabled="True"
+                                         
+                                     Width="967">
                             <custom:FlipView.Items>
                                 <Grid Background="#2E8DEF">
                                     <Image Source="../Images/2.jpg"/>

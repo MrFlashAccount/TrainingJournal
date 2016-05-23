@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TrainingJournal
 {
-    static class DBworker
+    public static class DBworker
     {
         /// <summary>
         /// Метод пробует верифицировать пользователя
@@ -44,7 +44,7 @@ namespace TrainingJournal
                     db.SaveChanges();
                 }
             }
-            catch(Exception e)
+            catch
             {
                 return false;
             }
@@ -284,6 +284,19 @@ namespace TrainingJournal
             {
                 return null;
             }
-        } 
+        }
+
+        public static List<User> GetUserList()
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.User.ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

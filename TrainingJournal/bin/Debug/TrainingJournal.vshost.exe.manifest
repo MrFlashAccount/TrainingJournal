@@ -199,14 +199,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3580888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3584984">
       <assemblyIdentity name="TrainingJournal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gLoXSCbKZUIm9fIywnEdHJ4VLApeNcQ0VeD6SI/Vv5g=</dsig:DigestValue>
+        <dsig:DigestValue>wvleqjqz1dbtRAy69WyuJz+Zz+8xS0zsb4uDfT3CIns=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -16,14 +16,18 @@ namespace TrainingJournal.Views
     public partial class Workspace : ISwitchable
     {
         private readonly Session _session;
+        private readonly MetroWindow _holder;
+
         public List<UserAntropometry> UserAntropometries;
         public List<Weight> UserWeights;
         public List<TrainJournal> TrainJournals;
 
-        public Workspace(Session session)
+        public Workspace(MetroWindow holder, Session session)
         {
             InitializeComponent();
             _session = session;
+            _holder = holder;
+
             NameTextBlock.DataContext = _session.LoginedUser;
             FillAntropomertyBlock(_session.GetLastUserAntropometry());
 

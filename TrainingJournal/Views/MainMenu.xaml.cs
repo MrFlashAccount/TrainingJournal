@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using WPFPageSwitch;
 
 namespace TrainingJournal.Views
@@ -8,14 +8,16 @@ namespace TrainingJournal.Views
     /// <summary>
     /// Логика взаимодействия для MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl, ISwitchable
+    public partial class MainMenu : ISwitchable
     {
-        private Session _session;
+        private readonly Session _session;
+        private readonly MetroWindow _holder;
 
-        public MainMenu(Session session)
+        public MainMenu(MetroWindow holder, Session session)
         {
             InitializeComponent();
             _session = session;
+            _holder = holder;
         }
 
         #region ISwitchable Members
@@ -29,17 +31,17 @@ namespace TrainingJournal.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Login(_session));
+            Switcher.Switch(new Login(_holder, _session));
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Registration(_session));
+            Switcher.Switch(new Registration(_holder, _session));
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_session.IsStarted) Switcher.Switch(new Workspace(_session));
+            if (_session.IsStarted) Switcher.Switch(new Workspace(_holder, _session));
         }
     }
 }

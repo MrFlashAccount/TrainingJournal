@@ -14,7 +14,7 @@ namespace TrainingJournal
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class PageSwitcher : MetroWindow
+    public partial class PageSwitcher
     {
         private readonly Session _session;
         private string _path;
@@ -23,8 +23,11 @@ namespace TrainingJournal
         {
             InitializeComponent();
             _session = new Session();
+
+            UserNameLabel.DataContext = _session.LoginedUser.Name;
+
             Switcher.pageSwitcher = this;
-            Switcher.Switch(new MainMenu(_session));
+            Switcher.Switch(new MainMenu(this, _session));
         }
 
         public void Navigate(UserControl nextPage)
@@ -77,13 +80,11 @@ namespace TrainingJournal
 
             if (!_session.TryChangeAvatar(newFileName))
             {
-                MessageDialogResult messageResult =
-                    await this.ShowMessageAsync("Ошибка", "Возникла ошибка при смене изображения профиля");
+                await this.ShowMessageAsync("Ошибка", "Возникла ошибка при смене изображения профиля");
             }
             else
             {
-                MessageDialogResult messageResult =
-                    await this.ShowMessageAsync("Успех", "Аватар успешно изменен");
+                await this.ShowMessageAsync("Успех", "Аватар успешно изменен");
             }
         }
 
@@ -91,10 +92,10 @@ namespace TrainingJournal
         {
             if (NameTextBox.Text != string.Empty) _session.ChangeName(NameTextBox.Text);
 
-            if (ChangePasswordBox.Password != string.Empty) ShowLoginDialogOnlyPassword(this, e);
+            if (ChangePasswordBox.Password != string.Empty) ShowLoginDialogOnlyPassword();
         }
 
-        private async void ShowLoginDialogOnlyPassword(object sender, RoutedEventArgs e)
+        private async void ShowLoginDialogOnlyPassword()
         {
             LoginDialogSettings dialogSettings = new LoginDialogSettings
             {
@@ -112,7 +113,7 @@ namespace TrainingJournal
             {
                 if (_session.TryChangePassword(result.Password, ChangePasswordBox.Password)) return;
 
-                MessageDialogResult messageResult = await this.ShowMessageAsync("Неверный пароль.", "Повторите ввод.");
+                await this.ShowMessageAsync("Неверный пароль.", "Повторите ввод.");
                 ChangeSettingsFlayoutState();
                 ChangePasswordBox.Password = string.Empty;
             }
@@ -382,6 +383,13 @@ namespace TrainingJournal
             wordDoc.Close();
             Marshal.CleanupUnusedObjectsInCurrentContext();
             GC.Collect();
+        }
+
+        private void ExitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChangeSettingsFlayoutState();
+            _session.Exit();
+            Switcher.Switch(new MainMenu(this, _session));
         }
     }
 }

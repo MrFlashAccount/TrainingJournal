@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using WPFPageSwitch;
 
 namespace TrainingJournal.Views
@@ -8,14 +8,16 @@ namespace TrainingJournal.Views
     /// <summary>
     /// Логика взаимодействия для Registration.xaml
     /// </summary>
-    public partial class Registration : UserControl, ISwitchable
+    public partial class Registration : ISwitchable
     {
-        private Session _session;
+        private readonly Session _session;
+        private readonly MetroWindow _holder;
 
-        public Registration(Session session)
+        public Registration(MetroWindow holder, Session session)
         {
             InitializeComponent();
             _session = session;
+            _holder = holder;
         }
 
         #region ISwitchable Members
@@ -29,12 +31,12 @@ namespace TrainingJournal.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new MainMenu(_session));
+            Switcher.Switch(new MainMenu(_holder, _session));
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordBox.Password != PasswordConfirmBox.Password)
+            if (PasswordBox.Password != ConfirmPasswordBox.Password)
                 ErrorLabel.Content = "Пароли не совпадают!";
             else
             {
@@ -49,7 +51,7 @@ namespace TrainingJournal.Views
                 if (!_session.Registration(user))
                     ErrorLabel.Content = "Возникла непредвиденная ошибка!";
                 else
-                    Switcher.Switch(new MainMenu(_session));
+                    Switcher.Switch(new MainMenu(_holder, _session));
             }
         }
     }

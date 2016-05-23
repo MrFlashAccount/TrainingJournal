@@ -144,3 +144,5 @@ D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Deb
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HTMLPages\PullUps.html
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\DayExpander.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\DayExpander.g.cs
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserEnterController.baml
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserEnterController.g.cs

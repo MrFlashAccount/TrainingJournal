@@ -14,6 +14,11 @@ namespace TrainingJournal
         public bool IsStarted { get; private set; }
         public BitmapImage Avatar { get; private set; }
 
+        public Session()
+        {
+            LoginedUser = new User();
+        }
+
         /// <summary>
         /// Метод выполняющий вызов верификации пользователя и устанавливающий данные сессии
         /// </summary>
@@ -52,7 +57,7 @@ namespace TrainingJournal
         /// <returns>true в случае удачной смены, иначе false</returns>
         public bool ChangeName(string newName)
         {
-            if (LoginedUser == null) return false;
+            if (IsStarted == false) return false;
 
             LoginedUser.Name = newName;
             return DBworker.ChangeName(LoginedUser, newName);
@@ -66,7 +71,7 @@ namespace TrainingJournal
         /// <returns></returns>
         public bool TryChangePassword(string oldpassword, string newpassword)
         {
-            if (LoginedUser == null) return false;
+            if (IsStarted == false) return false;
             if (oldpassword != LoginedUser.Password) return false;
 
             return DBworker.ChangePassword(LoginedUser, newpassword);
@@ -79,7 +84,7 @@ namespace TrainingJournal
         /// <returns></returns>
         public bool TryChangeAvatar(string newImage)
         {
-            if (LoginedUser == null) return false;
+            if (IsStarted == false) return false;
 
             LoginedUser.Image = newImage;
             return DBworker.ChangeAvatar(LoginedUser, newImage);
@@ -89,39 +94,47 @@ namespace TrainingJournal
         /// Метод возвращает данные дневника.
         /// </summary>
         /// <returns>Данные дневника, иначе null</returns>
-        public List<TrainJournal> GetTrainJournal() => LoginedUser == null ? null : DBworker.GetTrainJournal(LoginedUser);
+        public List<TrainJournal> GetTrainJournal() => IsStarted == false ? null : DBworker.GetTrainJournal(LoginedUser);
 
-        public bool AddExersice(TrainJournal trainJournal) => LoginedUser == null ? false : DBworker.AddExersice(trainJournal);
+        public bool AddExersice(TrainJournal trainJournal) => IsStarted == false ? false : DBworker.AddExersice(trainJournal);
 
-        public UserAntropometry GetLastUserAntropometry() => LoginedUser == null ? null : DBworker.GetLastUserAntropometry(LoginedUser);
+        public UserAntropometry GetLastUserAntropometry() => IsStarted == false ? null : DBworker.GetLastUserAntropometry(LoginedUser);
 
-        public List<UserAntropometry> GetUserAntropometry() => LoginedUser == null ? null : DBworker.GetUserAntropometry(LoginedUser);
+        public List<UserAntropometry> GetUserAntropometry() => IsStarted == false ? null : DBworker.GetUserAntropometry(LoginedUser);
 
-        public bool AddUserAntropometry(UserAntropometry userAntropometry) => LoginedUser == null ? false : DBworker.AddUserAntropometry(userAntropometry);
+        public bool AddUserAntropometry(UserAntropometry userAntropometry) => IsStarted == false ? false : DBworker.AddUserAntropometry(userAntropometry);
 
-        public List<Weight> GetWeight() => LoginedUser == null ? null : DBworker.GetWeight(LoginedUser);
+        public List<Weight> GetWeight() => IsStarted == false ? null : DBworker.GetWeight(LoginedUser);
 
-        public bool AddWeight(Weight weight) => LoginedUser == null ? false : DBworker.AddWeight(weight);
+        public bool AddWeight(Weight weight) => IsStarted == false ? false : DBworker.AddWeight(weight);
 
         public void SaveTrainJournals()
         {
-            if (!IsStarted) return;
+            if (IsStarted == false) return;
             DBworker.SaveTrainJournals();
         }
 
-        public List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to)
-        {
-            return !IsStarted ? null : DBworker.GetUserAntropometryByPeriod(from, to, LoginedUser);
-        }
+        public List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to) => !IsStarted ? null : DBworker.GetUserAntropometryByPeriod(@from, to, LoginedUser);
 
-        public List<Weight> GetWeightByPeriod(DateTime from, DateTime to)
-        {
-            return !IsStarted ? null : DBworker.GetWeightByPeriod(from, to, LoginedUser);
-        }
+        public List<Weight> GetWeightByPeriod(DateTime from, DateTime to) => !IsStarted ? null : DBworker.GetWeightByPeriod(@from, to, LoginedUser);
 
-        public List<TrainJournal> GetTrainJournalsByPeriod(DateTime from, DateTime to)
+        public List<TrainJournal> GetTrainJournalsByPeriod(DateTime from, DateTime to) => !IsStarted ? null : DBworker.GeTrainJournalsByPeriod(@from, to, LoginedUser);
+
+        public List<User> GetUserList() => DBworker.GetUserList();
+
+        public bool Exit()
         {
-            return !IsStarted ? null : DBworker.GeTrainJournalsByPeriod(from, to, LoginedUser);
+            try
+            {
+                LoginedUser = null;
+                IsStarted = false;
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

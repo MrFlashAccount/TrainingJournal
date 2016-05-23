@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using WPFPageSwitch;
+using System.Collections.Generic;
+using MahApps.Metro.Controls;
 
 namespace TrainingJournal.Views
 {
     /// <summary>
     /// Логика взаимодействия для Login.xaml
     /// </summary>
-    public partial class Login : UserControl, ISwitchable
+    public partial class Login : ISwitchable
     {
-        private Session _session;
+        private readonly Session _session;
+        private readonly MetroWindow _holder;
 
-        public Login(Session session)
+        public Login(MetroWindow holder,Session session)
         {
             InitializeComponent();
             _session = session;
+            _holder = holder;
         }
 
         #region ISwitchable Members
@@ -29,25 +32,29 @@ namespace TrainingJournal.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new MainMenu(_session));
+            Switcher.Switch(new MainMenu(_holder, _session));
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ProgressRing.Visibility = Visibility.Visible;
+            List<User> userList = _session.GetUserList();
 
-            User user = new User();
+            if (userList == null)
             {
-                user.Identificator = LoginTextBox.Text;
-                user.Password = PasswordBox.Password;
+                DefaultTextBlock.Visibility = Visibility.Visible;
+                RegisterButton.Visibility = Visibility.Visible;
+                return;
             }
 
-            if (!_session.TryLogin(user))
+            foreach (User user in userList)
             {
-                ProgressRing.Visibility = Visibility.Hidden;
-                ErrorLabel.Text = "Неверный логин или пароль!";
+                Content.Children.Add(new UserEnterController(user, _holder, _session));
             }
-            else Switcher.Switch(new MainMenu(_session));
+        }
+
+        private void RegisterButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Registration(_holder, _session));
         }
     }
 }

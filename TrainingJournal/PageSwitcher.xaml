@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:local="clr-namespace:TrainingJournal"
         mc:Ignorable="d"
         Title="GymApp" Height="600" Width="1000"
-        Icon="Gymapp_logo.ico" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="ThreeDBorderWindow" Closing="MetroWindow_Closing" >
+        Icon="Gymapp_logo.ico" WindowStartupLocation="CenterOwner" WindowStyle="ThreeDBorderWindow" Closing="MetroWindow_Closing" >
 
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
@@ -21,22 +20,24 @@
     </controls:MetroWindow.RightWindowCommands>
 
     <controls:MetroWindow.Flyouts>
-        <controls:FlyoutsControl x:Name="FlyoutsControl">
-            <controls:Flyout x:Name="SettingsFlyout"
+        <controls:FlyoutsControl Name="FlyoutsControl">
+            <controls:Flyout Name="SettingsFlyout"
                              Margin="100 0 0 0"
                              AreAnimationsEnabled="True"
                              AnimateOnPositionChange="{Binding AnimateOnPositionChange}"
                              FocusedElement="{Binding ElementName=firstTB}"
                              Header="Настройки"
                              Position="Right">
-
+                
                 <Grid Width="350" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -80,8 +81,22 @@
                                  Margin="0,5,5,5"
                                  VerticalAlignment="Top"/>
 
-                    <Button x:Name="SettingsButtonSave"
+                    <Label Name="UserNameLabel"  
+                           Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="5"
+                           VerticalAlignment="Top"
+                           Content="Выйти из системы"/>
+                    <Button x:Name="ExitButton"
                             Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="5"
+                            VerticalAlignment="Top"
+                            Content="Выйти"
+                            Click="ExitButton_OnClick"/>
+
+                    <Button x:Name="SettingsButtonSave"
+                            Grid.Row="4"
                             Grid.Column="1"
                             Width="75"
                             Margin="5"

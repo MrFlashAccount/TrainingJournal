@@ -3,73 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:local="clr-namespace:TrainingJournal.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1000">
-    <Grid x:Name="LayoutRoot" Background="White">
-        <TextBlock x:Name="UsernameTextBlock" 
-                   HorizontalAlignment="Left" 
-                   Margin="295,234,0,0" 
-                   VerticalAlignment="Top" 
-                   Width="100" Height="30" 
-                   Text="Логин" 
-                   TextWrapping="Wrap" 
-                   FontSize="18.667" 
-                   TextAlignment="Right"/>
-
-        <TextBlock x:Name="PasswordTextBlock" 
-                   HorizontalAlignment="Left" 
-                   Margin="295,269,0,0" 
-                   VerticalAlignment="Top" 
-                   Width="100" Height="30" 
-                   FontSize="18.667" 
-                   Text="Пароль" 
-                   TextWrapping="Wrap" 
-                   TextAlignment="Right"/>
-
-        <TextBox x:Name="LoginTextBox" 
-                 Margin="400,229,400,0" 
-                 VerticalAlignment="Top" 
-                 TextWrapping="Wrap" 
-                 Height="30" 
-                 FontSize="18.667" 
-                 Grid.ColumnSpan="2"/>
+             d:DesignHeight="600" d:DesignWidth="1000" Loaded="UserControl_Loaded">
+    <Grid>
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="*"/>
+           <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
-        <PasswordBox x:Name="PasswordBox"
-                     HorizontalAlignment="Left" 
-                     Margin="400,264,0,0"
-                     VerticalAlignment="Top" 
-                     Width="200" Height="30" 
-                     FontSize="18.667" 
-                     Grid.ColumnSpan="2"/>
-        
-        <Button x:Name="LoginButton" 
-                Margin="425,0,425,237" 
-                VerticalAlignment="Bottom" 
-                Content="Войти"
-                Width="150" Height="30" 
-                FontSize="16" 
-                Click="LoginButton_Click" IsDefault="True"/>
-        <Button 
-            Height="25" 
-            HorizontalAlignment="Right" 
-            Margin="0,0,20,20" 
-            VerticalAlignment="Bottom" 
-            Width="100" 
-            Content="&lt; Назад" 
-            Click="BackButton_Click"/>
+        <StackPanel Name="Content" 
+                    Grid.Column="1"
+                    Grid.Row="1">
+            <TextBlock Name="DefaultTextBlock" Text="Пользователей нет. Станьте первым!"
+                       Visibility="Collapsed"
+                       TextAlignment="Center"
+                       FontSize="20"/>
+            <Button Name="RegisterButton"
+                    Visibility="Collapsed"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Content="Зарегистрироваться!" 
+                    IsDefault="True" 
+                    BorderThickness="0" 
+                    Margin="0,3,0,0"
+                    Click="RegisterButton_OnClick"/>
+        </StackPanel>
 
-        <TextBlock x:Name="ErrorLabel" 
-                   Text="" 
-                   HorizontalAlignment="Left" 
-                   Margin="400,362,0,0" 
-                   VerticalAlignment="Top" 
-                   Width="200"/>
-
-        <controls:ProgressRing x:Name="ProgressRing"
-                               Width="30" Height="30" 
-                               Margin="580,327,385,243"
-                               Visibility="Hidden"/>
+        <Button Name="BackButton"
+            Height="25"
+            Grid.Column="2"
+            Grid.Row="3"
+            HorizontalAlignment="Right"
+            Margin="0,5,5,5"
+            VerticalAlignment="Bottom"
+            Width="100"
+            Content="&lt; Назад"
+            Click="BackButton_Click" />
     </Grid>
 </UserControl>
