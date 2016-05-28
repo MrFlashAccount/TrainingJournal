@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using WPFPageSwitch;
@@ -8,7 +10,7 @@ namespace TrainingJournal.Views
     /// <summary>
     /// Логика взаимодействия для UserEnterController.xaml
     /// </summary>
-    public partial class UserEnterController
+    public partial class UserEnterController : INotifyPropertyChanged
     {
         private readonly User _user;
         private readonly bool _isNeedToRequestPassword = true;
@@ -19,15 +21,27 @@ namespace TrainingJournal.Views
         {
             InitializeComponent();
 
-            UserName.Text = user.Name;
-            //UserName.DataContext = user.Name;
+            //UserName.Text = user.Name;
 
             _holder = holder;
             _user = user;
             _session = session;
 
+            UserName.DataContext = _user;
+
             if (user.Password == string.Empty) _isNeedToRequestPassword = false;
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        #endregion
 
         private void EnterButton_OnClick(object sender, RoutedEventArgs e)
         {

@@ -356,19 +356,19 @@ namespace TrainingJournal
                         wordDoc.SetSelectionToCell(position, 2);
                         wordDoc.Selection.Text = temp[i].Name;
 
-                        //wordDoc.SetSelectionToCell(position, 3);
-                        //wordDoc.Selection.Text = temp[i]..ToString();
+                        wordDoc.SetSelectionToCell(position, 3);
+                        wordDoc.Selection.Text = temp[i].Weight.ToString();
 
                         wordDoc.SetSelectionToCell(position, 4);
                         wordDoc.Selection.Text = temp[i].NumOfSets.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 3);
+                        wordDoc.SetSelectionToCell(position, 5);
                         wordDoc.Selection.Text = temp[i].NumOfReps.ToString();
 
-                        //wordDoc.SetSelectionToCell(position, 3);
-                        //wordDoc.Selection.Text = temp[i].ToString();
+                        wordDoc.SetSelectionToCell(position, 6);
+                        wordDoc.Selection.Text = (temp[i].Weight*temp[i].NumOfSets*temp[i].NumOfReps).ToString();
 
-                        wordDoc.SetSelectionToCell(position, 3);
+                        wordDoc.SetSelectionToCell(position, 7);
                         wordDoc.Selection.Text = temp[i].Comment;
                     }
 

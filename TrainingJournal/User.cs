@@ -12,7 +12,6 @@ using System.Runtime.CompilerServices;
 
 namespace TrainingJournal
 {
-    using System;
     using System.Collections.Generic;
     
     public partial class User : INotifyPropertyChanged
@@ -20,12 +19,13 @@ namespace TrainingJournal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.TrainJournal = new HashSet<TrainJournal>();
-            this.UserAntropometry = new HashSet<UserAntropometry>();
-            this.Weight = new HashSet<Weight>();
+            TrainJournal = new HashSet<TrainJournal>();
+            UserAntropometry = new HashSet<UserAntropometry>();
+            Weight = new HashSet<Weight>();
         }
 
         private string name;
+        private string image;
         public string Identificator { get; set; }
         public string Password { get; set; }
         public string Name
@@ -33,8 +33,20 @@ namespace TrainingJournal
             get { return name; }
             set { name = value; OnPropertyChanged("Name"); }
         }
-        public string Image { get; set; }
-    
+
+        public string Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TrainJournal> TrainJournal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -45,8 +57,7 @@ namespace TrainingJournal
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
