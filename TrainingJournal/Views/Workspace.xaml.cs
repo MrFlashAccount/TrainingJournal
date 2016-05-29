@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using TrainingJournal.HelpPages;
 using WPFPageSwitch;
 
@@ -20,7 +21,6 @@ namespace TrainingJournal.Views
 
         public List<UserAntropometry> UserAntropometries;
         public List<Weight> UserWeights;
-        public List<TrainJournal> TrainJournals;
 
         public Workspace(MetroWindow holder, Session session)
         {
@@ -75,26 +75,59 @@ namespace TrainingJournal.Views
 
         private void FillTrainJournalContent()
         {
-            ExerciseStackPanel.Children.Clear();
-
             try
             {
-                foreach (DateTime date in SelectUniqueDates())
-                {
-                    DayExpander dex = new DayExpander(_session, date);
-                    dex.AddExercises(SelectTrainJournlasByDate(date));
-                    ExerciseStackPanel?.Children.Add(dex);
-                }
+                if (_session.TrainJournals.Count > 0 && _session.TrainJournals.LastOrDefault()?.Date == DateTime.Today)
+                    foreach (DateTime date in SelectUniqueDatesInverse())
+                    {
+                        ExerciseStackPanel?.Children.Add(new DayExpander(_holder, _session, date,
+                            SelectTrainJournlasByDate(date)));
+                    }
+                else
+                    foreach (DateTime date in SelectUniqueDatesWithTodayInverse())
+                    {
+                        ExerciseStackPanel?.Children.Add(new DayExpander(_holder, _session, date,
+                            SelectTrainJournlasByDate(date)));
+                    }
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show(e.Message);
+                ShowErrorMessage("Возникла ошибка при добавлении упражнений!", "Сожалеем об этом");
             }
         }
 
-        private List<DateTime> SelectUniqueDates() => TrainJournals.Select(x => x.Date).Distinct().ToList();
+        private void AddExerciseUserControl(TrainJournal tJournal)
+        {
+            DayExpander var = ExerciseStackPanel?.Children[0] as DayExpander;
 
-        private List<TrainJournal> SelectTrainJournlasByDate(DateTime date) => TrainJournals.Where(x => x.Date == date).ToList();
+            if (var?.ControlDateTime != tJournal.Date) AddDayExpander(tJournal);
+            else var.AddExercise(tJournal);
+        }
+
+        private void AddDayExpander(TrainJournal tJournal)
+        {
+            DayExpander dx = new DayExpander(_holder, _session, DateTime.Today, new List<TrainJournal> { tJournal });
+            ExerciseStackPanel?.Children.Add(dx);
+        }
+
+        private List<DateTime> SelectUniqueDatesInverse()
+        {
+            List<DateTime> listToReturn = _session.TrainJournals.Select(x => x.Date).Distinct().ToList();
+            listToReturn.Reverse();
+
+            return listToReturn;
+        }
+
+        private List<DateTime> SelectUniqueDatesWithTodayInverse()
+        {
+            List<DateTime> listToReturn = _session.TrainJournals.Select(x => x.Date).Distinct().ToList();
+            listToReturn.Add(DateTime.Today);
+            listToReturn.Reverse();
+
+            return listToReturn;
+        }
+
+        private List<TrainJournal> SelectTrainJournlasByDate(DateTime date) => _session.TrainJournals.Where(x => x.Date == date).ToList();
 
         #region ISwitchable Members
 
@@ -129,39 +162,27 @@ namespace TrainingJournal.Views
         {
             TrainJournal trainJournal = new TrainJournal();
 
-            AddExercise addExercise = new AddExercise();
-
-            if (addExercise.ShowDialog() != true) return;
-
             try
             {
                 trainJournal.Login = _session.LoginedUser.Identificator;
-                trainJournal.Name = addExercise.NameTextBox.Text;
+                //trainJournal.User = _session.LoginedUser;
                 trainJournal.Date = DateTime.Today;
-                trainJournal.NumOfSets = byte.Parse(addExercise.NumOfSetsTextBox.Text);
-                trainJournal.NumOfReps = byte.Parse(addExercise.NumOfRepsTextBox.Text);
-                trainJournal.Weight = int.Parse(addExercise.WeightTextBox.Text);
             }
             catch
             {
                 return;
             }
-            TrainJournals.Add(trainJournal);
-            if (!_session.AddExersice(trainJournal)) MessageBox.Show("Error");
-            FillTrainJournalContent();
+
+            if (!_session.AddExersice(trainJournal)) ShowErrorMessage("Возникла ошибка", "Сожалеем об этом");
+
+            AddExerciseUserControl(trainJournal);
         }
 
         private void JournalTabItem_Loaded(object sender, RoutedEventArgs e)
         {
             CurrentDateTextBlock.Text = DateTime.Today.ToString("D");
 
-            TrainJournals = _session.GetTrainJournal();
             FillTrainJournalContent();
-
-            #region Next Iteration
-
-            #endregion
-
         }
 
         private void SaveWeightButton_OnClick(object sender, RoutedEventArgs e)
@@ -249,6 +270,11 @@ namespace TrainingJournal.Views
                     ContentGrid.Children.Add(new LegExtension());
                     break;
             }
+        }
+
+        private async void ShowErrorMessage(string title, string message)
+        {
+            await _holder.ShowMessageAsync(title, message);
         }
     }
 }

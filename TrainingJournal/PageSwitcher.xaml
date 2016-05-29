@@ -8,6 +8,7 @@
                       Title="TrainJournal"
                       Height="600" Width="1000"
                       Icon="Gymapp_logo.ico"
+                      Closing="MetroWindow_Closing"
                       WindowStartupLocation="CenterOwner"
                       WindowStyle="ThreeDBorderWindow"
                       MinWidth="1024" MinHeight="600"
@@ -57,11 +58,9 @@
                              Header="Настройки"
                              Position="Right">
 
-                <Grid Width="350" Margin="10">
+                <Grid Width="300" Margin="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -73,62 +72,47 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0"
-                           Grid.Column="0"
-                           Margin="5"
-                           VerticalAlignment="Top"
-                           Content="Сменить аватар" />
                     <Button x:Name="ChangeAvatarButton"
                             Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Margin="5"
                             VerticalAlignment="Top"
-                            Content="Загрузить фото"
+                            Content="Сменить аватар"
                             Click="ChangeAvatarButton_OnClick" />
 
-                    <Label Grid.Row="1"
-                           Grid.Column="0"
-                           Margin="5"
-                           VerticalAlignment="Top"
-                           Content="Имя" />
                     <TextBox x:Name="NameTextBox"
                              Grid.Row="1"
-                             Grid.Column="1"
-                             Margin="0,5,5,5"
-                             VerticalAlignment="Top" />
+                             Grid.Column="0"
+                             Margin="5"
+                             VerticalAlignment="Center"
+                             Text ="{Binding Name, Mode=TwoWay}"
+                             ToolTip="Сменить имя"
+                             controls:TextBoxHelper.UseFloatingWatermark="True" 
+                             controls:TextBoxHelper.Watermark="Ваше имя"/>
 
-                    <Label x:Name="ChangePasswordLabel"
-                           Grid.Row="2"
-                           Grid.Column="0"
-                           Margin="5"
-                           VerticalAlignment="Top"
-                           Content="Новый пароль" />
                     <PasswordBox x:Name="ChangePasswordBox"
                                  Grid.Row="2"
-                                 Grid.Column="1"
-                                 Margin="0,5,5,5"
-                                 VerticalAlignment="Top" />
+                                 Grid.Column="0"
+                                 Margin="5"
+                                 ToolTip="Сменить пароль"
+                                 VerticalAlignment="Center"
+                                 controls:TextBoxHelper.UseFloatingWatermark="True" 
+                             controls:TextBoxHelper.Watermark="Новый пароль"/>
 
-                    <Label Name="UserNameLabel"
-                           Grid.Row="3"
-                           Grid.Column="0"
-                           Margin="5"
-                           VerticalAlignment="Top"
-                           Content="Выйти из системы" />
                     <Button x:Name="ExitButton"
                             Grid.Row="3"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Margin="5"
-                            VerticalAlignment="Top"
-                            Content="Выйти"
+                            VerticalAlignment="Center"
+                            Content="Выйти из системы"
                             Click="ExitButton_OnClick" />
 
                     <Button x:Name="SettingsButtonSave"
                             Grid.Row="4"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Width="75"
                             Margin="5"
-                            HorizontalAlignment="Right"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Content="Сохранить"
                             Click="SettingsButtonSave_OnClick" />

@@ -24,7 +24,7 @@ namespace TrainingJournal
             InitializeComponent();
             _session = new Session();
 
-            UserNameLabel.DataContext = _session.LoginedUser.Name;
+            NameTextBox.DataContext = _session.LoginedUser;
 
             Switcher.pageSwitcher = this;
             Switcher.Switch(new MainMenu(this, _session));
@@ -143,7 +143,7 @@ namespace TrainingJournal
         
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            _session.SaveTrainJournals();
         }
 
         private void UploadToWord_OnClick(object sender, RoutedEventArgs e)

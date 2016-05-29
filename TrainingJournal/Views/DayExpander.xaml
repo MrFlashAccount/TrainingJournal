@@ -17,7 +17,8 @@
                   HeaderStringFormat="dd.MM.yyyy" 
                   Grid.Column="0"
                   Grid.Row="0"
-                  IsExpanded="False">
+                  IsExpanded="False" 
+                  Expanded="ExerciseExpander_Expanded">
             <StackPanel Name="ExerciseContainer"/>
         </Expander>
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace TrainingJournal
@@ -225,12 +226,16 @@ namespace TrainingJournal
             }
         }
 
-        public static bool SaveTrainJournals()
+        public static bool SaveTrainJournals(List<TrainJournal> trainJournals)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
+                    foreach (var trainJournal in trainJournals)
+                    {
+                        db.Entry(trainJournal).State = EntityState.Modified;
+                    }
                     db.SaveChanges();
                     return true;
                 }
@@ -296,6 +301,24 @@ namespace TrainingJournal
             catch
             {
                 return null;
+            }
+        }
+
+        public static bool RemoveTrainJournal(TrainJournal trainJournal)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    TrainJournal tj = db.TrainJournal.Find(trainJournal.Identificator);
+                    db.TrainJournal.Remove(tj);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
     }

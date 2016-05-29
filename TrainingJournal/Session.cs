@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Media.Imaging;
 
 namespace TrainingJournal
 {
     // ReSharper disable SimplifyConditionalTernaryExpression
-    public class Session
+    public class Session : INotifyPropertyChanged
     {
         /// <summary>
         /// Данные пользователя текущей сессии
@@ -14,9 +17,25 @@ namespace TrainingJournal
         public bool IsStarted { get; private set; }
         public BitmapImage Avatar { get; private set; }
 
+        private List<TrainJournal> _trainJournals;
+
+        public List<TrainJournal> TrainJournals
+        {
+            get
+            {
+                return _trainJournals;
+            }
+            set
+            {
+                _trainJournals.AddRange(value);
+                OnPropertyChanged();
+            }
+        }
+
         public Session()
         {
             LoginedUser = new User();
+            _trainJournals = new List<TrainJournal>();
         }
 
         /// <summary>
@@ -27,10 +46,14 @@ namespace TrainingJournal
         public bool TryLogin(User userdata)
         {
             LoginedUser = DBworker.Login(userdata);
+
             if (LoginedUser == null) return false;
 
             IsStarted = true;
+
             Avatar = new BitmapImage(new Uri("./Images/" + LoginedUser.Image, UriKind.Relative));
+            TrainJournals = GetTrainJournal();
+
             return true;
         }
 
@@ -96,7 +119,21 @@ namespace TrainingJournal
         /// <returns>Данные дневника, иначе null</returns>
         public List<TrainJournal> GetTrainJournal() => IsStarted == false ? null : DBworker.GetTrainJournal(LoginedUser);
 
-        public bool AddExersice(TrainJournal trainJournal) => IsStarted == false ? false : DBworker.AddExersice(trainJournal);
+        public bool AddExersice(TrainJournal trainJournal)
+        {
+            if (IsStarted == false) return false;
+
+            try
+            {
+                TrainJournals.Add(trainJournal);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public UserAntropometry GetLastUserAntropometry() => IsStarted == false ? null : DBworker.GetLastUserAntropometry(LoginedUser);
 
@@ -111,7 +148,32 @@ namespace TrainingJournal
         public void SaveTrainJournals()
         {
             if (IsStarted == false) return;
-            DBworker.SaveTrainJournals();
+
+            foreach (var trainJournal in TrainJournals.Where(x => x.Identificator == 0))
+            {
+                DBworker.AddExersice(trainJournal);
+            }
+
+
+            DBworker.SaveTrainJournals(TrainJournals.Where(x => x.Identificator != 0).ToList());
+        }
+
+        public bool DeleteTrainJournalByID(TrainJournal trainJournal)
+        {
+            if (!IsStarted) return false;
+
+            try
+            {
+                if (trainJournal.Identificator != 0) DBworker.RemoveTrainJournal(trainJournal);
+
+                TrainJournals.Remove(trainJournal);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to) => !IsStarted ? null : DBworker.GetUserAntropometryByPeriod(@from, to, LoginedUser);
@@ -126,7 +188,10 @@ namespace TrainingJournal
         {
             try
             {
+                SaveTrainJournals();
+
                 LoginedUser = null;
+                _trainJournals = new List<TrainJournal>();
                 IsStarted = false;
             }
             catch
@@ -136,5 +201,16 @@ namespace TrainingJournal
 
             return true;
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        #endregion
     }
 }

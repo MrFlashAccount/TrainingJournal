@@ -70,7 +70,7 @@
         <ScrollViewer Grid.Column="1" Grid.Row="1">
             <StackPanel>
                 <controls:FlipView Height="300"
-                                   Width="896"
+                                   Width="850"
                                    IsBannerEnabled="True"
                                    SelectionChanged="Selector_OnSelectionChanged"
                                    IsManipulationEnabled="True">
