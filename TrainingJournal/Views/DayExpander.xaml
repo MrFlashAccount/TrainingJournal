@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Expander Name="ExerciseExpander" 
-                  HeaderStringFormat="dd.MM.yyyy" 
+                  HeaderStringFormat="D" 
                   Grid.Column="0"
                   Grid.Row="0"
                   IsExpanded="False" 

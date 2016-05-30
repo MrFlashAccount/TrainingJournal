@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,7 +19,6 @@ namespace TrainingJournal.Views
         private readonly MetroWindow _holder;
 
         public List<UserAntropometry> UserAntropometries;
-        public List<Weight> UserWeights;
 
         public Workspace(MetroWindow holder, Session session)
         {
@@ -29,13 +27,8 @@ namespace TrainingJournal.Views
             _holder = holder;
 
             NameTextBlock.DataContext = _session.LoginedUser;
-            FillAntropomertyBlock(_session.GetLastUserAntropometry());
 
-            UserAntropometries = _session.GetUserAntropometry();
             FillUserAntropometryHistoryDg();
-
-            FillWeightBlock(_session.GetWeight().LastOrDefault());
-            UserWeights = _session.GetWeight();
             FillWeightHistoryDg();
 
             Avatar.DataContext = _session;
@@ -43,34 +36,64 @@ namespace TrainingJournal.Views
 
         private void FillUserAntropometryHistoryDg()
         {
-            AntropometryHistoryDatagrid.ItemsSource = null;
-            AntropometryHistoryDatagrid.ItemsSource = UserAntropometries;
+            NechDataGrid.ItemsSource = null;
+            NechDataGrid.ItemsSource = _session.UserAntropometries;
+
+            ChestDataGrid.ItemsSource = null;
+            ChestDataGrid.ItemsSource = _session.UserAntropometries;
+
+            ArmsDataGrid.ItemsSource = null;
+            ArmsDataGrid.ItemsSource = _session.UserAntropometries;
+
+            WaistDataGrid.ItemsSource = null;
+            WaistDataGrid.ItemsSource = _session.UserAntropometries;
+
+            HipDataGrid.ItemsSource = null;
+            HipDataGrid.ItemsSource = _session.UserAntropometries;
+
+            ShinDataGrid.ItemsSource = null;
+            ShinDataGrid.ItemsSource = _session.UserAntropometries;
+
+            if (_session.CurrentUserAntropometry == null)
+            {
+                NeckTextBox.Text = "нет";
+                ChestTextBlock.Text = "нет";
+                ArmTextBlock.Text = "нет";
+                WaistTextBlock.Text = "нет";
+                HipTextBlock.Text = "нет";
+                ShinTextBlock.Text = "нет";
+
+                return;
+            }
+
+            if (_session.CurrentUserAntropometry.Nech != null)
+                NeckTextBox.Text = $"{_session.CurrentUserAntropometry.Nech} см.";
+            if (_session.CurrentUserAntropometry.Chest != null)
+                ChestTextBlock.Text = $"{_session.CurrentUserAntropometry.Chest} см.";
+            if (_session.CurrentUserAntropometry.Arm != null)
+                ArmTextBlock.Text = $"{_session.CurrentUserAntropometry.Arm} см.";
+            if (_session.CurrentUserAntropometry.Waist != null)
+                WaistTextBlock.Text = $"{_session.CurrentUserAntropometry.Waist} см.";
+            if (_session.CurrentUserAntropometry.Hip != null)
+                HipTextBlock.Text = $"{_session.CurrentUserAntropometry.Hip} см.";
+            if (_session.CurrentUserAntropometry.Shin != null)
+                ShinTextBlock.Text = $"{_session.CurrentUserAntropometry.Shin} см.";
         }
 
         private void FillWeightHistoryDg()
         {
-            WeightHistoryDatagrid.ItemsSource = null;
-            WeightHistoryDatagrid.ItemsSource = UserWeights;
-        }
+            WeightDataGrid.ItemsSource = null;
+            WeightDataGrid.ItemsSource = _session.UserWeights.ToArray().Reverse().ToList();
 
-        private void FillAntropomertyBlock(UserAntropometry antropometry)
-        {
-            if (antropometry == null) return;
+            if (_session.CurrentWeight == null)
+            {
+                WeightTextBox.Text = "нет";
+                FatPercentTextBox.Text = "нет";
+                return;
+            }
 
-            NeckBackTextBox.Text = antropometry.Nech.ToString();
-            ChestBackTextBox.Text = antropometry.Chest.ToString();
-            ArmBackTextBox.Text = antropometry.Arm.ToString();
-            WaistBackTextBox.Text = antropometry.Waist.ToString();
-            HipBackTextBox.Text = antropometry.Hip.ToString();
-            ShinBackTextBox.Text = antropometry.Shin.ToString();
-        }
-
-        private void FillWeightBlock(Weight weight)
-        {
-            if (weight == null) return;
-
-            WeightBackTextBox.Text = weight.Weight1.ToString(CultureInfo.CurrentCulture);
-            FatPercentBackTextBox.Text = weight.FatPercent != null ? weight.FatPercent.ToString() : "<пусто>";
+            WeightTextBox.Text = $"{_session.CurrentWeight.Weight1} кг.";
+            FatPercentTextBox.Text = $"{_session.CurrentWeight.FatPercent} %";
         }
 
         private void FillTrainJournalContent()
@@ -138,26 +161,6 @@ namespace TrainingJournal.Views
 
         #endregion
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            UserAntropometry userAntropometry = new UserAntropometry()
-            {
-                Login = _session.LoginedUser.Identificator,
-                Nech = (float) Convert.ToDouble(NeckTextBox.Text),
-                Chest = (float) Convert.ToDouble(ChestTextBox.Text),
-                Arm = (float) Convert.ToDouble(ArmTextBox.Text),
-                Waist = (float) Convert.ToDouble(WaistTextBox.Text),
-                Hip = (float) Convert.ToDouble(HipTextBox.Text),
-                Shin = (float) Convert.ToDouble(ShinTextBox.Text),
-                Date = DateTime.Today
-            };
-            UserAntropometries.Add(userAntropometry);
-            FillUserAntropometryHistoryDg();
-            SuccesLabel.Content = !_session.AddUserAntropometry(userAntropometry)
-                ? "Возникла ошибка при сохранении данных"
-                : "Сохранено";
-        }
-
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
             TrainJournal trainJournal = new TrainJournal();
@@ -165,7 +168,6 @@ namespace TrainingJournal.Views
             try
             {
                 trainJournal.Login = _session.LoginedUser.Identificator;
-                //trainJournal.User = _session.LoginedUser;
                 trainJournal.Date = DateTime.Today;
             }
             catch
@@ -187,19 +189,21 @@ namespace TrainingJournal.Views
 
         private void SaveWeightButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Weight weight = new Weight()
+            if (WeightValueNumericUpDown.Value == null) return;
+
+            Weight weight = new Weight
             {
                 Login = _session.LoginedUser.Identificator,
                 Date = DateTime.Today,
-                Weight1 = float.Parse(WeightTextBox.Text),
-                FatPercent = int.Parse(FatPercentTextBox.Text)
+                Weight1 = (float) WeightValueNumericUpDown.Value,
+                FatPercent = Convert.ToInt16(FatPercentValueNumericUpDown.Value ?? 0)
             };
 
-            UserWeights.Add(weight);
+            WeightValueNumericUpDown.Value = null;
+            FatPercentValueNumericUpDown.Value = null;
+            _session.UserWeights = new List<Weight> {weight};
+
             FillWeightHistoryDg();
-            SuccesWeightLabel.Content = !_session.AddWeight(weight)
-                ? "Возникла ошибка при сохранении данных"
-                : "Сохранено";
         }
 
         private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -225,6 +229,10 @@ namespace TrainingJournal.Views
 
             switch (tvItem.Name)
             {
+                case "UserAntropometry":
+                    ContentGrid.Children.Clear();
+                    ContentGrid.Children.Add(new HelpPages.UserAntropometry());
+                    break;
                 case "Squat":
                     ContentGrid.Children.Clear();
                     ContentGrid.Children.Add(new Squat());
@@ -275,6 +283,21 @@ namespace TrainingJournal.Views
         private async void ShowErrorMessage(string title, string message)
         {
             await _holder.ShowMessageAsync(title, message);
+        }
+
+        private void SaveNechButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            UserAntropometry userAntropometry = new UserAntropometry()
+            {
+                Login = _session.LoginedUser.Identificator,
+                Nech = (float)Convert.ToDouble(NechNumericUpDown.Value ?? 0),
+                Date = DateTime.Today
+            };
+
+            _session.UserAntropometries = new List<UserAntropometry> {userAntropometry};
+            NechNumericUpDown.Value = 0;
+
+            FillUserAntropometryHistoryDg();
         }
     }
 }

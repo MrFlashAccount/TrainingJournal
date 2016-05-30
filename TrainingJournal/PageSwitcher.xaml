@@ -59,63 +59,62 @@
                              Position="Right">
 
                 <Grid Width="300" Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Button x:Name="ChangeAvatarButton"
+                                Margin="5"
+                                VerticalAlignment="Top"
+                                Content="Сменить аватар"
+                                Click="ChangeAvatarButton_OnClick" />
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Button x:Name="ChangeAvatarButton"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Margin="5"
-                            VerticalAlignment="Top"
-                            Content="Сменить аватар"
-                            Click="ChangeAvatarButton_OnClick" />
-
-                    <TextBox x:Name="NameTextBox"
-                             Grid.Row="1"
-                             Grid.Column="0"
-                             Margin="5"
-                             VerticalAlignment="Center"
-                             Text ="{Binding Name, Mode=TwoWay}"
-                             ToolTip="Сменить имя"
-                             controls:TextBoxHelper.UseFloatingWatermark="True" 
-                             controls:TextBoxHelper.Watermark="Ваше имя"/>
-
-                    <PasswordBox x:Name="ChangePasswordBox"
-                                 Grid.Row="2"
-                                 Grid.Column="0"
+                        <TextBox x:Name="NameTextBox"
                                  Margin="5"
-                                 ToolTip="Сменить пароль"
                                  VerticalAlignment="Center"
-                                 controls:TextBoxHelper.UseFloatingWatermark="True" 
-                             controls:TextBoxHelper.Watermark="Новый пароль"/>
+                                 Text="{Binding Name, Mode=TwoWay}"
+                                 ToolTip="Сменить имя"
+                                 controls:TextBoxHelper.UseFloatingWatermark="True"
+                                 controls:TextBoxHelper.Watermark="Ваше имя" />
 
-                    <Button x:Name="ExitButton"
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            Margin="5"
-                            VerticalAlignment="Center"
-                            Content="Выйти из системы"
-                            Click="ExitButton_OnClick" />
+                        <PasswordBox x:Name="ChangePasswordBox"
+                                     Margin="5"
+                                     ToolTip="Сменить пароль"
+                                     VerticalAlignment="Center"
+                                     controls:TextBoxHelper.UseFloatingWatermark="True"
+                                     controls:TextBoxHelper.Watermark="Новый пароль" />
 
-                    <Button x:Name="SettingsButtonSave"
-                            Grid.Row="4"
-                            Grid.Column="0"
-                            Width="75"
-                            Margin="5"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom"
-                            Content="Сохранить"
-                            Click="SettingsButtonSave_OnClick" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Время отдыха(в сек.)"
+                                       Margin="5"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                            <controls:NumericUpDown Name="RestTimeNumericUpDown"
+                                                    FontSize="20"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Center"
+                                                    ToolTip="Вес"
+                                                    Minimum="0"
+                                                    Maximum="999"
+                                                    Interval="1"
+                                                    BorderThickness="1"
+                                                    Background="{x:Null}"
+                                                    UpDownButtonsWidth="20"
+                                                    ButtonsAlignment="Right"
+                                                    HorizontalContentAlignment="Center"
+                                                    Value="0" />
+                        </StackPanel>
+
+                        <Button x:Name="ExitButton"
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                Content="Выйти из системы"
+                                Click="ExitButton_OnClick" />
+
+                        <Button x:Name="SettingsButtonSave"
+                                Width="75"
+                                Margin="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Content="Сохранить"
+                                Click="SettingsButtonSave_OnClick" /></StackPanel>
                 </Grid>
             </controls:Flyout>
 

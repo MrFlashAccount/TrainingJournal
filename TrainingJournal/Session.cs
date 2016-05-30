@@ -18,13 +18,14 @@ namespace TrainingJournal
         public BitmapImage Avatar { get; private set; }
 
         private List<TrainJournal> _trainJournals;
+        private List<Weight> _userWeights;
+        private Weight _currentWeight;
+        private UserAntropometry _currentUserAntropometry;
+        private List<UserAntropometry> _userAntropometries;
 
         public List<TrainJournal> TrainJournals
         {
-            get
-            {
-                return _trainJournals;
-            }
+            get { return _trainJournals; }
             set
             {
                 _trainJournals.AddRange(value);
@@ -32,10 +33,51 @@ namespace TrainingJournal
             }
         }
 
+        public List<Weight> UserWeights
+        {
+            get { return _userWeights; }
+            set
+            {
+                _userWeights.AddRange(value);
+                OnPropertyChanged();
+            }
+        }
+
+        public List<UserAntropometry> UserAntropometries {
+            get { return _userAntropometries; }
+            set
+            {
+                _userAntropometries.AddRange(value);
+                OnPropertyChanged();
+            }
+        }
+
+        public Weight CurrentWeight
+        {
+            get { return _currentWeight; }
+            set
+            {
+                _currentWeight = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public UserAntropometry CurrentUserAntropometry
+        {
+            get { return _currentUserAntropometry; }
+            set
+            {
+                _currentUserAntropometry = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Session()
         {
+            _userAntropometries = new List<UserAntropometry>();
             LoginedUser = new User();
             _trainJournals = new List<TrainJournal>();
+            _userWeights = new List<Weight>();
         }
 
         /// <summary>
@@ -53,6 +95,8 @@ namespace TrainingJournal
 
             Avatar = new BitmapImage(new Uri("./Images/" + LoginedUser.Image, UriKind.Relative));
             TrainJournals = GetTrainJournal();
+            UserWeights = GetWeight();
+            UserAntropometries = GetUserAntropometry();
 
             return true;
         }
@@ -158,6 +202,7 @@ namespace TrainingJournal
             DBworker.SaveTrainJournals(TrainJournals.Where(x => x.Identificator != 0).ToList());
         }
 
+        // ReSharper disable once InconsistentNaming
         public bool DeleteTrainJournalByID(TrainJournal trainJournal)
         {
             if (!IsStarted) return false;
@@ -208,6 +253,8 @@ namespace TrainingJournal
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
+            if (prop == "UserWeights") CurrentWeight = UserWeights.LastOrDefault();
+            if (prop == "UserAntropometries") CurrentUserAntropometry = UserAntropometries.LastOrDefault();
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 

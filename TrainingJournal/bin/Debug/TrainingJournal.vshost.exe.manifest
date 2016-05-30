@@ -103,14 +103,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlRenderer.dll" size="221696">
-      <assemblyIdentity name="HtmlRenderer" version="1.5.0.5" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlRenderer.dll" size="222208">
+      <assemblyIdentity name="HtmlRenderer" version="1.5.0.6" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>24PfjnyHf/sJFsFMmtbTH9TCfKqM9w/ueA9v7hWoFkA=</dsig:DigestValue>
+        <dsig:DigestValue>VGr+ZzYUr4vMefSbFien3axjDZd7ylgpjfrMKI12ink=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -199,14 +199,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3599832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3605464">
       <assemblyIdentity name="TrainingJournal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IpSXmWqe6bNtU6lUUXKf+a40txr7rXp5BJM1EzluohE=</dsig:DigestValue>
+        <dsig:DigestValue>jeOWyvEjZtKQb717tLAzkAh47qfiW/zolcnkqVLkP9U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -316,6 +316,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>d/ed6WFT01kr+7WkYSdWgyPLGJLNidGxPZO5lNzQf0w=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="HTMLPages\UserAntropometry.html" size="19683">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>25gC8ZKRMCLFOo8/I8htFa82FPPnMKVqm/4cArZ5YYI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TrainingJournal.exe.config" size="1976">

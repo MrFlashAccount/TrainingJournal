@@ -100,7 +100,6 @@ D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Deb
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Resources\Icons.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Resources\IconsNonShared.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\BenchPress.g.cs
-D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\BenchPress.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.dll
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HtmlRenderer.WPF.dll
@@ -146,3 +145,6 @@ D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Deb
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\DayExpander.g.cs
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserEnterController.baml
 D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\Views\UserEnterController.g.cs
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\UserAntropometry.g.cs
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\obj\Debug\HelpPages\UserAntropometry.baml
+D:\Documents\Visual Studio 2015\Projects\TrainingJournal\TrainingJournal\bin\Debug\HTMLPages\UserAntropometry.html

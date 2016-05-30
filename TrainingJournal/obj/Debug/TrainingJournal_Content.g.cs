@@ -19,6 +19,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/militarypress.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/pullups.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/squat.html")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/userantropometry.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournaldb.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.edmx.sql")]

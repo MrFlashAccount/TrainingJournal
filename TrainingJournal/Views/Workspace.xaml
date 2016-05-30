@@ -4,6 +4,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:custom="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:oxy="http://oxyplot.org/wpf"
     x:Class="TrainingJournal.Views.Workspace"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="1000">
@@ -12,6 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -25,344 +27,486 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TabControl x:Name="MainTabs"
+        <TabControl Name="MainTabs"
                     Grid.Column="0"
                     Grid.Row="0">
             <TabItem Header="Профиль">
+                <TabControl TabStripPlacement="Left">
 
-                <ScrollViewer CanContentScroll="True"
-                              VerticalScrollBarVisibility="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <StackPanel>
+                    <TabItem Header="Моя страница">
+                        <ScrollViewer CanContentScroll="True"
+                                      VerticalScrollBarVisibility="Auto">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="4*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image x:Name="Avatar"
-                                       Grid.Column="1"
-                                       HorizontalAlignment="Left"
-                                       Height="100"
-                                       Width="100"
-                                       VerticalAlignment="Top"
-                                       Source="../Images/noAvatar.jpg" />
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="8*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
 
-                                <TextBlock x:Name="NameTextBlock"
-                                           HorizontalAlignment="Center"
-                                           Grid.Column="2"
-                                           TextWrapping="Wrap"
-                                           FontSize="30"
-                                           Margin="20,0"
-                                           TextAlignment="Center"
-                                           Text="{Binding Name}"
-                                           VerticalAlignment="Center"
-                                           Width="240" />
-                            </Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100" MaxHeight="100" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
 
-                            <Expander x:Name="BodyMeasurmentExpander"
-                                      IsExpanded="False"
-                                      Margin="0,10"
-                                      Header="Замеры тела">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <GroupBox x:Name="MeasurementGroupBox"
-                                              Header="Замеры тела"
-                                              HorizontalAlignment="Left"
-                                              Margin="10,0,0,0"
-                                              Grid.Column="0" Height="291" VerticalAlignment="Top">
-                                        <Grid HorizontalAlignment="Left"
-                                              VerticalAlignment="Top">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="100" />
-                                                <ColumnDefinition Width="100" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
+                                        <Image x:Name="Avatar"
+                                               Grid.Column="1"
+                                               Grid.Row="0"
+                                               HorizontalAlignment="Center"
+                                               Height="100"
+                                               Width="100"
+                                               VerticalAlignment="Center"
+                                               Source="../Images/noAvatar.jpg" />
 
-                                            <Label x:Name="NeckLabel"
-                                                   Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Шея" />
-                                            <TextBox x:Name="NeckTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="NeckBackTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Label x:Name="ChestLabel"
-                                                   Grid.Row="2"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Грудь" />
-                                            <TextBox x:Name="ChestTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="ChestBackTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Label x:Name="ArmLabel"
-                                                   Grid.Row="3"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Руки" />
-                                            <TextBox x:Name="ArmTextBox"
-                                                     Grid.Row="3"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="ArmBackTextBox"
-                                                     Grid.Row="3"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Label x:Name="WaistLabel"
-                                                   Grid.Row="4"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Талия" />
-                                            <TextBox x:Name="WaistTextBox"
-                                                     Grid.Row="4"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="WaistBackTextBox"
-                                                     Grid.Row="4"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Label x:Name="HipLabel"
-                                                   Grid.Row="5"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Бедра" />
-                                            <TextBox x:Name="HipTextBox"
-                                                     Grid.Row="5"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="HipBackTextBox"
-                                                     Grid.Row="5"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Label x:Name="ShinLabel"
-                                                   Grid.Row="6"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Голень" />
-                                            <TextBox x:Name="ShinTextBox"
-                                                     Grid.Row="6"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="ShinBackTextBox"
-                                                     Grid.Row="6"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
-
-                                            <Button x:Name="SaveButton"
-                                                    Content="Сохранить"
-                                                    Grid.Column="1"
-                                                    Grid.Row="7"
-                                                    HorizontalAlignment="Left"
-                                                    Margin="10,10,0,0"
-                                                    VerticalAlignment="Top" Width="80" Click="SaveButton_Click" />
-                                            <Label x:Name="SuccesLabel"
-                                                   Content=""
-                                                   Grid.Column="2"
+                                        <TextBlock x:Name="NameTextBlock"
                                                    HorizontalAlignment="Left"
-                                                   Margin="10,10,0,0"
-                                                   Grid.Row="7"
-                                                   VerticalAlignment="Top"
-                                                   RenderTransformOrigin="-1.211,0.885" />
-                                        </Grid>
-                                    </GroupBox>
+                                                   Margin="30,0"
+                                                   Grid.Column="2"
+                                                   Grid.Row="0"
+                                                   TextWrapping="Wrap"
+                                                   FontSize="30"
+                                                   TextAlignment="Center"
+                                                   Text="{Binding Name}"
+                                                   VerticalAlignment="Center" />
 
-                                    <DataGrid x:Name="AntropometryHistoryDatagrid"
-                                              IsReadOnly="True"
-                                              AutoGenerateColumns="False"
-                                              CanUserDeleteRows="False"
-                                              CanUserAddRows="False" Height="285"
-                                              VerticalAlignment="Top"
-                                              Grid.Column="1">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Дата"
-                                                                Width="*"
-                                                                Binding="{Binding Date, StringFormat=dd-MM-yyyy}" />
-                                            <DataGridTextColumn Header="Шея"
-                                                                Width="*"
-                                                                Binding="{Binding Nech}" />
-                                            <DataGridTextColumn Header="Грудь"
-                                                                Width="*"
-                                                                Binding="{Binding Chest}" />
-                                            <DataGridTextColumn Header="Руки"
-                                                                Width="*"
-                                                                Binding="{Binding Arm}" />
-                                            <DataGridTextColumn Header="Талия"
-                                                                Width="*"
-                                                                Binding="{Binding Waist}" />
-                                            <DataGridTextColumn Header="Бедра"
-                                                                Width="*"
-                                                                Binding="{Binding Hip}" />
-                                            <DataGridTextColumn Header="Голень"
-                                                                Width="*"
-                                                                Binding="{Binding Shin}" />
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </Grid>
-                            </Expander>
+                                        <StackPanel Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="2">
+                                            <Expander Header="Вес и процент жира"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="WeightValueNumericUpDown"
+                                                                              Margin="5"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              StringFormat="F1"
+                                                                              Minimum="0"
+                                                                              custom:TextBoxHelper.Watermark="Вес"
+                                                                              HideUpDownButtons="True" />
+                                                        <custom:NumericUpDown Name="FatPercentValueNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              Maximum="100"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Процент жира"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveWeightButton"
+                                                                Content="Записать"
+                                                                Margin="5"
+                                                                Click="SaveWeightButton_OnClick" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="WeightDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False" MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Вес"
+                                                                                Width="*"
+                                                                                Binding="{Binding Weight1}" />
+                                                            <DataGridTextColumn Header="Процент жира"
+                                                                                Width="*"
+                                                                                Binding="{Binding FatPercent}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Шея"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="NechNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              HideUpDownButtons="True"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение" />
+                                                        <Button Name="SaveNechButton"
+                                                                Content="Записать"
+                                                                Margin="5"
+                                                                Click="SaveNechButton_OnClick" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="NechDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Nech}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Грудь"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="ChestNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveChestButton"
+                                                                Content="Записать"
+                                                                Margin="5" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="ChestDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Chest}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Руки"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="ArmsNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveArmsButton"
+                                                                Content="Записать"
+                                                                Margin="5" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="ArmsDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Arm}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Талия"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="WaistNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveWaistButton"
+                                                                Content="Записать"
+                                                                Margin="5" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="WaistDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Waist}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
 
-                            <Expander Name="WeightMeasurmentExpander"
-                                      Header="Замеры веса"
-                                      Margin="0,10,0,0">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-
-                                    </Grid.ColumnDefinitions>
-                                    <GroupBox x:Name="WeightGroupBox"
-                                              Grid.Column="0"
-                                              Header="Замеры тела"
-                                              HorizontalAlignment="Left"
-                                              Margin="10" VerticalAlignment="Top" Height="158" Width="400">
-                                        <Grid HorizontalAlignment="Left" Height="117" Margin="-5,-7,-7,0"
-                                              VerticalAlignment="Top" Width="400">
+                                            </Expander>
+                                            <Expander Header="Бедра"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="HipNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveHipButton"
+                                                                Content="Записать"
+                                                                Margin="5" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="HipDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Hip}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Голень"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="ShinNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Значение"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveShinButton"
+                                                                Content="Записать"
+                                                                Margin="5" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="ShinDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False"
+                                                              MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Значение"
+                                                                                Width="*"
+                                                                                Binding="{Binding Shin}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                        </StackPanel>
+                                        <Grid Grid.Row="0"
+                                              Grid.Column="3"
+                                              Grid.RowSpan="2">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="100" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
 
-                                            <Label x:Name="WeightLabel"
-                                                   Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Вес" />
-                                            <TextBox x:Name="WeightTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="WeightBackTextBox"
-                                                     Grid.Row="1"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                                            <GroupBox x:Name="MeasurementGroupBox"
+                                                      Header="Ваши параметры"
+                                                      HorizontalAlignment="Center"
+                                                      Margin="10,0"
+                                                      Grid.Column="0"
+                                                      VerticalAlignment="Top">
+                                                <Grid HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
 
-                                            <Label x:Name="FatPercentLabel"
-                                                   Grid.Row="2"
-                                                   Grid.Column="0"
-                                                   Margin="20,5"
-                                                   VerticalAlignment="Top"
-                                                   Content="Процент жира" />
-                                            <TextBox x:Name="FatPercentTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="1"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" />
-                                            <TextBox x:Name="FatPercentBackTextBox"
-                                                     Grid.Row="2"
-                                                     Grid.Column="2"
-                                                     Margin="5,5,5,5"
-                                                     VerticalAlignment="Top" IsReadOnly="True" />
+                                                    <TextBlock x:Name="WeightLabel"
+                                                               Grid.Row="1"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Center"
+                                                               Text="Вес" />
+                                                    <TextBlock x:Name="WeightTextBox"
+                                                               Grid.Row="1"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               Width="40"
+                                                               Text="{Binding Weight1}"
+                                                               VerticalAlignment="Center" />
 
-                                            <Button x:Name="SaveWeightButton"
-                                                    Content="Сохранить"
-                                                    Grid.Column="1"
-                                                    Grid.Row="3"
-                                                    HorizontalAlignment="Left"
-                                                    Margin="10,10,0,0"
-                                                    VerticalAlignment="Top" Width="80" Click="SaveWeightButton_OnClick" />
-                                            <Label x:Name="SuccesWeightLabel"
-                                                   Content=""
-                                                   Grid.Column="2"
-                                                   HorizontalAlignment="Left"
-                                                   Margin="10,10,0,0"
-                                                   Grid.Row="3"
-                                                   VerticalAlignment="Top"
-                                                   RenderTransformOrigin="-1.211,0.885" />
+                                                    <TextBlock x:Name="FatPercentLabel"
+                                                               Grid.Row="2"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Center"
+
+                                                               Text="Процент жира" />
+                                                    <TextBlock x:Name="FatPercentTextBox"
+                                                               Grid.Row="2"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               Width="40"
+                                                               Text="{Binding FatPercent}"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="NeckLabel"
+                                                               Grid.Row="3"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Шея" />
+                                                    <TextBlock x:Name="NeckTextBox"
+                                                               Grid.Row="3"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="ChestLabel"
+                                                               Grid.Row="4"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Грудь" />
+                                                    <TextBlock x:Name="ChestTextBlock"
+                                                               Grid.Row="4"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="ArmLabel"
+                                                               Grid.Row="5"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Руки" />
+                                                    <TextBlock x:Name="ArmTextBlock"
+                                                               Grid.Row="5"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="WaistLabel"
+                                                               Grid.Row="6"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Талия" />
+                                                    <TextBlock x:Name="WaistTextBlock"
+                                                               Grid.Row="6"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Top" />
+
+                                                    <TextBlock x:Name="HipLabel"
+                                                               Grid.Row="7"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Center"
+                                                               Text="Бедра" />
+                                                    <TextBlock x:Name="HipTextBlock"
+                                                               Grid.Row="7"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="ShinLabel"
+                                                               Grid.Row="8"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Голень" />
+                                                    <TextBlock x:Name="ShinTextBlock"
+                                                               Grid.Row="8"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+                                                </Grid>
+                                            </GroupBox>
                                         </Grid>
-                                    </GroupBox>
-
-                                    <DataGrid Name="WeightHistoryDatagrid"
-                                              Margin="10,10,10,0"
-                                              Grid.Column="1"
-                                              IsReadOnly="True"
-                                              AutoGenerateColumns="False"
-                                              CanUserDeleteRows="False"
-                                              CanUserAddRows="False"
-                                              Height="158"
-                                              VerticalAlignment="Top">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Дата"
-                                                                Width="*"
-                                                                Binding="{Binding Date, StringFormat=dd-MM-yyyy}" />
-                                            <DataGridTextColumn Header="Вес"
-                                                                Width="*"
-                                                                Binding="{Binding Weight1}" />
-                                            <DataGridTextColumn Header="Процент жира"
-                                                                Width="*"
-                                                                Binding="{Binding FatPercent}" />
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </Grid>
-                            </Expander>
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                    </TabItem>
+                    
+                    <TabItem Header="Графики">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <!--<oxy:Plot Name="WeightOxyPlot" 
+                                          Title="Вес"
+                                          Margin="5">
+                                    <oxy:Plot.Series>
+                                        <oxy:LineSeries ItemsSource="{Binding Points}"/>
+                                    </oxy:Plot.Series>
+                                </oxy:Plot>-->
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="1">
+                                
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </TabItem>
             <TabItem x:Name="JournalTabItem" Header="Тренировочный процесс" Loaded="JournalTabItem_Loaded">
                 <Grid>
@@ -372,6 +516,7 @@
                     </Grid.RowDefinitions>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -390,12 +535,19 @@
                                    Margin="10,0"
                                    Text="Дата" />
                         <DatePicker Name="PickDateDatePicker"
+                                    Visibility="Collapsed"
                                     Grid.Column="2"
                                     VerticalAlignment="Center"
                                     Margin="25,0" custom:TextBoxHelper.Watermark="Перейти к дате" />
+                        <Button Name="ShowTrainJournalsByPeriod"
+                                Visibility="Collapsed"
+                                Grid.Column="3"
+                                VerticalAlignment="Center"
+                                Margin="5"
+                                Content="Отобразить тренировки за период"/>
                         <Button Name="AddButton"
-                                Grid.Column="4"
-                                Margin="10,0" 
+                                Grid.Column="5"
+                                Margin="20,0" 
                                 Click="AddButton_OnClick" 
                                 Height="30" 
                                 VerticalAlignment="Center" 
@@ -452,6 +604,7 @@
                     <TreeView Name="NavigationTree"
                               DockPanel.Dock="Left"
                               Width="220">
+                        <TreeViewItem Name="UserAntropometry" Header="Замеры тела" Selected="TreeViewItem_Selected"></TreeViewItem>
                         <TreeViewItem Header="Базовые упражнения">
                             <TreeViewItem Name="Squat" Header="Приседания со штангой" Selected="TreeViewItem_Selected" />
                             <TreeViewItem Name="BenchPress" Header="Жим лежа" Selected="TreeViewItem_Selected" />
