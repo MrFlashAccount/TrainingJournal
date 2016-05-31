@@ -195,70 +195,70 @@ namespace TrainingJournal
             {
                 case "Антропометрия":
                 {
-                    List<UserAntropometry> temp = _session.GetUserAntropometryByPeriod(
-                        FromDatePicker.SelectedDate.Value, ToDatePicker.SelectedDate.Value);
-                    if (temp == null || temp.Count == 0)
-                    {
-                        ResultTextBlock.Text = "Не найдено записей за указанный период";
-                        return;
-                    }
+                    //List<UserAntropometry> temp = _session.GetUserAntropometryByPeriod(
+                    //    FromDatePicker.SelectedDate.Value, ToDatePicker.SelectedDate.Value);
+                    //if (temp == null || temp.Count == 0)
+                    //{
+                    //    ResultTextBlock.Text = "Не найдено записей за указанный период";
+                    //    return;
+                    //}
 
-                    #region Шапка таблицы
+                    //#region Шапка таблицы
 
-                    wordDoc.InsertTable(temp.Count + 1, 7);
+                    //wordDoc.InsertTable(temp.Count + 1, 7);
 
-                    wordDoc.SetSelectionToCell(1, 1);
-                    wordDoc.Selection.Text = "Дата";
+                    //wordDoc.SetSelectionToCell(1, 1);
+                    //wordDoc.Selection.Text = "Дата";
 
-                    wordDoc.SetSelectionToCell(1, 2);
-                    wordDoc.Selection.Text = "Шея";
+                    //wordDoc.SetSelectionToCell(1, 2);
+                    //wordDoc.Selection.Text = "Шея";
 
-                    wordDoc.SetSelectionToCell(1, 3);
-                    wordDoc.Selection.Text = "Грудь";
+                    //wordDoc.SetSelectionToCell(1, 3);
+                    //wordDoc.Selection.Text = "Грудь";
 
-                    wordDoc.SetSelectionToCell(1, 4);
-                    wordDoc.Selection.Text = "Руки";
+                    //wordDoc.SetSelectionToCell(1, 4);
+                    //wordDoc.Selection.Text = "Руки";
 
-                    wordDoc.SetSelectionToCell(1, 5);
-                    wordDoc.Selection.Text = "Талия";
+                    //wordDoc.SetSelectionToCell(1, 5);
+                    //wordDoc.Selection.Text = "Талия";
 
-                    wordDoc.SetSelectionToCell(1, 6);
-                    wordDoc.Selection.Text = "Бедра";
+                    //wordDoc.SetSelectionToCell(1, 6);
+                    //wordDoc.Selection.Text = "Бедра";
 
-                    wordDoc.SetSelectionToCell(1, 7);
-                    wordDoc.Selection.Text = "Голень";
+                    //wordDoc.SetSelectionToCell(1, 7);
+                    //wordDoc.Selection.Text = "Голень";
 
-                    #endregion
+                    //#endregion
 
-                    #region заполнение таблицы
+                    //#region заполнение таблицы
 
-                    for (int i = 0; i < temp.Count; i++)
-                    {
-                        int position = i + 2;
+                    //for (int i = 0; i < temp.Count; i++)
+                    //{
+                    //    int position = i + 2;
 
-                        wordDoc.SetSelectionToCell(position, 1);
-                        wordDoc.Selection.Text = temp[i].Date.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 1);
+                    //    wordDoc.Selection.Text = temp[i].Date.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 2);
-                        wordDoc.Selection.Text = temp[i].Nech.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 2);
+                    //    wordDoc.Selection.Text = temp[i].Nech.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 3);
-                        wordDoc.Selection.Text = temp[i].Chest.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 3);
+                    //    wordDoc.Selection.Text = temp[i].Chest.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 4);
-                        wordDoc.Selection.Text = temp[i].Arm.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 4);
+                    //    wordDoc.Selection.Text = temp[i].Arm.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 5);
-                        wordDoc.Selection.Text = temp[i].Hip.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 5);
+                    //    wordDoc.Selection.Text = temp[i].Hip.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 6);
-                        wordDoc.Selection.Text = temp[i].Shin.ToString();
+                    //    wordDoc.SetSelectionToCell(position, 6);
+                    //    wordDoc.Selection.Text = temp[i].Shin.ToString();
 
-                        wordDoc.SetSelectionToCell(position, 7);
-                        wordDoc.Selection.Text = temp[i].Waist.ToString();
-                    }
+                    //    wordDoc.SetSelectionToCell(position, 7);
+                    //    wordDoc.Selection.Text = temp[i].Waist.ToString();
+                    //}
 
-                    #endregion
+                    //#endregion
 
                     break;
                 }

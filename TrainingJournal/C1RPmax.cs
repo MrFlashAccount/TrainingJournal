@@ -12,16 +12,14 @@ namespace TrainingJournal
     using System;
     using System.Collections.Generic;
     
-    public partial class TrainJournal
+    public partial class C1RPmax
     {
         public int Identificator { get; set; }
-        public string Name { get; set; }
-        public string Login { get; set; }
         public System.DateTime Date { get; set; }
-        public int NumOfSets { get; set; }
-        public int NumOfReps { get; set; }
-        public float Weight { get; set; }
-        public string Comment { get; set; }
+        public string Login { get; set; }
+        public float BenchPress { get; set; }
+        public float Squat { get; set; }
+        public float Deadlift { get; set; }
     
         public virtual User User { get; set; }
     }

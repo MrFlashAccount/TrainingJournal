@@ -154,7 +154,9 @@
                         <TextBlock Text="Период"
                                    Grid.Column="0"
                                    Grid.Row="2"
+                                   Grid.RowSpan="2"
                                    Margin="5,0"
+                                   VerticalAlignment="Center"
                                    TextAlignment="Right" />
 
                         <ComboBox Name="WhatUploadListBox"

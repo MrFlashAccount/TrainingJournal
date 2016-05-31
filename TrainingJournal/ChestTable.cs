@@ -12,17 +12,12 @@ namespace TrainingJournal
     using System;
     using System.Collections.Generic;
     
-    public partial class UserAntropometry
+    public partial class ChestTable
     {
         public int Identificator { get; set; }
+        public System.DateTime Date { get; set; }
+        public float Chest { get; set; }
         public string Login { get; set; }
-        public Nullable<float> Nech { get; set; }
-        public Nullable<float> Chest { get; set; }
-        public Nullable<float> Arm { get; set; }
-        public Nullable<float> Waist { get; set; }
-        public Nullable<float> Hip { get; set; }
-        public Nullable<float> Shin { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual User User { get; set; }
     }

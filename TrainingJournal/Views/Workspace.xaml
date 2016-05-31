@@ -157,7 +157,7 @@
                                                                                 Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
                                                             <DataGridTextColumn Header="Значение"
                                                                                 Width="*"
-                                                                                Binding="{Binding Nech}" />
+                                                                                Binding="{Binding Neck}" />
                                                         </DataGrid.Columns>
                                                     </DataGrid>
                                                 </StackPanel>
@@ -178,7 +178,8 @@
                                                                               HideUpDownButtons="True" />
                                                         <Button Name="SaveChestButton"
                                                                 Content="Записать"
-                                                                Margin="5" />
+                                                                Margin="5" 
+                                                                Click="SaveChestButton_OnClick"/>
                                                     </StackPanel>
                                                     <DataGrid Name="ChestDataGrid"
                                                               IsReadOnly="True"
@@ -214,7 +215,8 @@
                                                                               HideUpDownButtons="True" />
                                                         <Button Name="SaveArmsButton"
                                                                 Content="Записать"
-                                                                Margin="5" />
+                                                                Margin="5" 
+                                                                Click="SaveArmsButton_OnClick"/>
                                                     </StackPanel>
                                                     <DataGrid Name="ArmsDataGrid"
                                                               IsReadOnly="True"
@@ -250,7 +252,8 @@
                                                                               HideUpDownButtons="True" />
                                                         <Button Name="SaveWaistButton"
                                                                 Content="Записать"
-                                                                Margin="5" />
+                                                                Margin="5" 
+                                                                Click="SaveWaistButton_OnClick"/>
                                                     </StackPanel>
                                                     <DataGrid Name="WaistDataGrid"
                                                               IsReadOnly="True"
@@ -287,7 +290,8 @@
                                                                               HideUpDownButtons="True" />
                                                         <Button Name="SaveHipButton"
                                                                 Content="Записать"
-                                                                Margin="5" />
+                                                                Margin="5"
+                                                                Click="SaveHipButton_OnClick"/>
                                                     </StackPanel>
                                                     <DataGrid Name="HipDataGrid"
                                                               IsReadOnly="True"
@@ -323,7 +327,8 @@
                                                                               HideUpDownButtons="True" />
                                                         <Button Name="SaveShinButton"
                                                                 Content="Записать"
-                                                                Margin="5" />
+                                                                Margin="5" 
+                                                                Click="SaveShinButton_OnClick"/>
                                                     </StackPanel>
                                                     <DataGrid Name="ShinDataGrid"
                                                               IsReadOnly="True"
@@ -344,19 +349,17 @@
                                                 </StackPanel>
                                             </Expander>
                                         </StackPanel>
-                                        <Grid Grid.Row="0"
+                                        <StackPanel 
+                                            Grid.Row="0"
                                               Grid.Column="3"
                                               Grid.RowSpan="2">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
 
                                             <GroupBox x:Name="MeasurementGroupBox"
                                                       Header="Ваши параметры"
                                                       HorizontalAlignment="Center"
-                                                      Margin="10,0"
-                                                      Grid.Column="0"
-                                                      VerticalAlignment="Top">
+                                                      Margin="10,0,10,5"
+                                                      VerticalAlignment="Top"
+                                                      Width="190">
                                                 <Grid HorizontalAlignment="Left"
                                                       VerticalAlignment="Top">
                                                     <Grid.ColumnDefinitions>
@@ -395,7 +398,6 @@
                                                                Grid.Column="0"
                                                                Margin="20,5"
                                                                VerticalAlignment="Center"
-
                                                                Text="Процент жира" />
                                                     <TextBlock x:Name="FatPercentTextBox"
                                                                Grid.Row="2"
@@ -478,7 +480,91 @@
                                                                VerticalAlignment="Center" />
                                                 </Grid>
                                             </GroupBox>
-                                        </Grid>
+                                            <GroupBox Name="C1Rpmax"
+                                                      Header="Ваши силовые"
+                                                      Margin="10,0,10,5"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Top"
+                                                      Width="190">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <TextBlock x:Name="BenchPressLabel"
+                                                               Grid.Row="0"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Center"
+                                                               Text="Жим лежа" />
+                                                    <TextBlock x:Name="BenchPressTextBlock"
+                                                               Grid.Row="0"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               Width="40"
+                                                               Text="{Binding BenchPress}"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="SquatLabel"
+                                                               Grid.Row="1"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Center"
+                                                               Text="Присед" />
+                                                    <TextBlock x:Name="SquatTextBox"
+                                                               Grid.Row="1"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               Width="40"
+                                                               Text="{Binding Squats}"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="DeadliftLabel"
+                                                               Grid.Row="2"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Становая тяга" />
+                                                    <TextBlock x:Name="DeadliftTextBox"
+                                                               Grid.Row="2"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="WeightCategoryLabel"
+                                                               Grid.Row="3"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="В/к" />
+                                                    <TextBlock x:Name="WeightCategoryTextBlock"
+                                                               Grid.Row="4"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+
+                                                    <TextBlock x:Name="RankLabel"
+                                                               Grid.Row="4"
+                                                               Grid.Column="0"
+                                                               Margin="20,5"
+                                                               VerticalAlignment="Top"
+                                                               Text="Разряд" />
+                                                    <TextBlock x:Name="RankTextBlock"
+                                                               Grid.Row="4"
+                                                               Grid.Column="1"
+                                                               Margin="5,5,5,5"
+                                                               VerticalAlignment="Center" />
+                                                </Grid>
+                                            </GroupBox>
+                                        </StackPanel>
                                     </Grid>
                                 </StackPanel>
                             </Grid>

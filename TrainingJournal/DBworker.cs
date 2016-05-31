@@ -18,7 +18,9 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    userdata = db.User.FirstOrDefault(p => p.Identificator == userdata.Identificator && p.Password == userdata.Password);
+                    userdata =
+                        db.Users.FirstOrDefault(
+                            p => p.Identificator == userdata.Identificator && p.Password == userdata.Password);
                     if (userdata == null) throw new UserInvalidExeption();
                 }
             }
@@ -41,7 +43,7 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    db.User.Add(userdata);
+                    db.Users.Add(userdata);
                     db.SaveChanges();
                 }
             }
@@ -59,13 +61,13 @@ namespace TrainingJournal
         /// <param name="user">Текущий пользователь</param>
         /// <param name="newName">Новое имя</param>
         /// <returns>true если все ок,иначе false</returns>
-        public static bool ChangeName(User user,string newName)
+        public static bool ChangeName(User user, string newName)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    User userToChange = db.User.Find(user.Identificator);
+                    User userToChange = db.Users.Find(user.Identificator);
                     userToChange.Name = newName;
                     db.SaveChanges();
                 }
@@ -90,7 +92,7 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    User userToChange = db.User.Find(user.Identificator);
+                    User userToChange = db.Users.Find(user.Identificator);
                     userToChange.Password = newPassword;
                     db.SaveChanges();
                 }
@@ -109,7 +111,7 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    User userToChange = db.User.Find(user.Identificator);
+                    User userToChange = db.Users.Find(user.Identificator);
                     userToChange.Image = newImage;
                     db.SaveChanges();
                 }
@@ -127,13 +129,12 @@ namespace TrainingJournal
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
-                    return db.TrainJournal.Where(p => p.Login == loginedUser.Identificator).ToList();
+                    return db.TrainJournals.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
             {
                 return null;
             }
-
         }
 
         public static bool AddExersice(TrainJournal trainJournal)
@@ -142,7 +143,7 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    db.TrainJournal.Add(trainJournal);
+                    db.TrainJournals.Add(trainJournal);
                     db.SaveChanges();
                     return true;
                 }
@@ -153,12 +154,12 @@ namespace TrainingJournal
             }
         }
 
-        public static List<UserAntropometry> GetUserAntropometry(User loginedUser)
+        public static List<C1RPmax> GetC1RPmaxes(User loginedUser)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
-                    return db.UserAntropometry.Where(p => p.Login == loginedUser.Identificator).ToList();
+                    return db.C1RPmax.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
             {
@@ -166,12 +167,12 @@ namespace TrainingJournal
             }
         }
 
-        public static UserAntropometry GetLastUserAntropometry(User loginedUser)
+        public static List<ArmTable> GetArmTables(User loginedUser)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
-                    return db.UserAntropometry.Where(p => p.Login == loginedUser.Identificator).ToList().Last();
+                    return db.ArmTables.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
             {
@@ -179,13 +180,180 @@ namespace TrainingJournal
             }
         }
 
-        public static bool AddUserAntropometry(UserAntropometry userAntropometry)
+        public static List<ChestTable> GetChestTables(User loginedUser)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.ChestTables.Where(p => p.Login == loginedUser.Identificator).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<HipTable> GetHipTables(User loginedUser)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.HipTables.Where(p => p.Login == loginedUser.Identificator).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<NeckTable> GetNeckTables(User loginedUser)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.NeckTables.Where(p => p.Login == loginedUser.Identificator).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<ShinTable> GetShinTables(User loginedUser)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.ShinTables.Where(p => p.Login == loginedUser.Identificator).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<WaistTable> GetWaistTables(User loginedUser)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return db.WaistTables.Where(p => p.Login == loginedUser.Identificator).ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static bool AddC1RPmax(C1RPmax c1RPmax)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    db.UserAntropometry.Add(userAntropometry);
+                    db.C1RPmax.Add(c1RPmax);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddArmTable(ArmTable armTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.ArmTables.Add(armTable);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddChestTable(ChestTable chestTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.ChestTables.Add(chestTable);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddHipTable(HipTable hipTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.HipTables.Add(hipTable);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddNeckTable(NeckTable neckTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.NeckTables.Add(neckTable);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddShinTable(ShinTable shinTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.ShinTables.Add(shinTable);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool AddWaistTable(WaistTable waistTable)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                {
+                    db.WaistTables.Add(waistTable);
                     db.SaveChanges();
                     return true;
                 }
@@ -201,7 +369,7 @@ namespace TrainingJournal
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
-                    return db.Weight.Where(p => p.Login == loginedUser.Identificator).ToList();
+                    return db.Weights.Where(p => p.Login == loginedUser.Identificator).ToList();
             }
             catch
             {
@@ -215,7 +383,7 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    db.Weight.Add(weight);
+                    db.Weights.Add(weight);
                     db.SaveChanges();
                     return true;
                 }
@@ -246,28 +414,13 @@ namespace TrainingJournal
             }
         }
 
-        public static List<UserAntropometry> GetUserAntropometryByPeriod(DateTime from,DateTime to, User user)
-        {
-            try
-            {
-                using (TrainJournalEntities db = new TrainJournalEntities())
-                    return
-                        db.UserAntropometry.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
-                            .ToList();
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
         public static List<Weight> GetWeightByPeriod(DateTime from, DateTime to, User user)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                     return
-                        db.Weight.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                        db.Weights.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
                             .ToList();
             }
             catch
@@ -276,13 +429,118 @@ namespace TrainingJournal
             }
         }
 
-        public static List<TrainJournal> GeTrainJournalsByPeriod(DateTime from, DateTime to, User user)
+        public static List<TrainJournal> GetTrainJournalsByPeriod(DateTime from, DateTime to, User user)
         {
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                     return
-                        db.TrainJournal.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                        db.TrainJournals.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<C1RPmax> GetC1RPmaxesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.C1RPmax.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<ArmTable> GetArmTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.ArmTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<ChestTable> GetChestTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.ChestTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<HipTable> GetHipTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.HipTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<NeckTable> GetNeckTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.NeckTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<ShinTable> GetShinTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.ShinTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
+                            .ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<WaistTable> GetWaistTablesByPeriod(DateTime from, DateTime to, User user)
+        {
+            try
+            {
+                using (TrainJournalEntities db = new TrainJournalEntities())
+                    return
+                        db.WaistTables.Where(p => p.Login == user.Identificator && p.Date >= from && p.Date <= to)
                             .ToList();
             }
             catch
@@ -296,7 +554,7 @@ namespace TrainingJournal
             try
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
-                    return db.User.ToList();
+                    return db.Users.ToList();
             }
             catch
             {
@@ -310,8 +568,8 @@ namespace TrainingJournal
             {
                 using (TrainJournalEntities db = new TrainJournalEntities())
                 {
-                    TrainJournal tj = db.TrainJournal.Find(trainJournal.Identificator);
-                    db.TrainJournal.Remove(tj);
+                    TrainJournal tj = db.TrainJournals.Find(trainJournal.Identificator);
+                    db.TrainJournals.Remove(tj);
                     db.SaveChanges();
                     return true;
                 }

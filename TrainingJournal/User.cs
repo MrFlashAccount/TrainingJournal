@@ -7,57 +7,49 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace TrainingJournal
 {
+    using System;
     using System.Collections.Generic;
     
-    public partial class User : INotifyPropertyChanged
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            TrainJournal = new HashSet<TrainJournal>();
-            UserAntropometry = new HashSet<UserAntropometry>();
-            Weight = new HashSet<Weight>();
+            this.C1RPmax = new HashSet<C1RPmax>();
+            this.ChestTables = new HashSet<ChestTable>();
+            this.NeckTables = new HashSet<NeckTable>();
+            this.TrainJournals = new HashSet<TrainJournal>();
+            this.ArmTables = new HashSet<ArmTable>();
+            this.HipTables = new HashSet<HipTable>();
+            this.ShinTables = new HashSet<ShinTable>();
+            this.WaistTables = new HashSet<WaistTable>();
+            this.Weights = new HashSet<Weight>();
         }
-
-        private string name;
-        private string image;
+    
         public string Identificator { get; set; }
         public string Password { get; set; }
-        public string Name
-        {
-            get { return name; }
-            set { name = value; OnPropertyChanged("Name"); }
-        }
-
-        public string Image
-        {
-            get
-            {
-                return image;
-            }
-            set
-            {
-                image = value;
-                OnPropertyChanged("Image");
-            }
-        }
-
+        public string Name { get; set; }
+        public string Image { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrainJournal> TrainJournal { get; set; }
+        public virtual ICollection<C1RPmax> C1RPmax { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAntropometry> UserAntropometry { get; set; }
+        public virtual ICollection<ChestTable> ChestTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Weight> Weight { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
+        public virtual ICollection<NeckTable> NeckTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TrainJournal> TrainJournals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArmTable> ArmTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HipTable> HipTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShinTable> ShinTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WaistTable> WaistTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Weight> Weights { get; set; }
     }
 }

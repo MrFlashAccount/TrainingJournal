@@ -25,9 +25,15 @@ namespace TrainingJournal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TrainJournal> TrainJournal { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<UserAntropometry> UserAntropometry { get; set; }
-        public virtual DbSet<Weight> Weight { get; set; }
+        public virtual DbSet<C1RPmax> C1RPmax { get; set; }
+        public virtual DbSet<ChestTable> ChestTables { get; set; }
+        public virtual DbSet<NeckTable> NeckTables { get; set; }
+        public virtual DbSet<TrainJournal> TrainJournals { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Weight> Weights { get; set; }
+        public virtual DbSet<ArmTable> ArmTables { get; set; }
+        public virtual DbSet<HipTable> HipTables { get; set; }
+        public virtual DbSet<ShinTable> ShinTables { get; set; }
+        public virtual DbSet<WaistTable> WaistTables { get; set; }
     }
 }

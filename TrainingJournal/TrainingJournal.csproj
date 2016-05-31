@@ -142,6 +142,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ArmTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C1RPmax.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChestTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBworker.cs" />
     <Compile Include="HelpPages\BenchPress.xaml.cs">
       <DependentUpon>BenchPress.xaml</DependentUpon>
@@ -179,35 +188,41 @@
     <Compile Include="HelpPages\UserAntropometry.xaml.cs">
       <DependentUpon>UserAntropometry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HipTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
     <Compile Include="ISwitchable.cs" />
+    <Compile Include="NeckTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>
     </Compile>
     <Compile Include="Session.cs" />
+    <Compile Include="ShinTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Switcher.cs" />
-    <Compile Include="TrainingJournalDB.Context.cs">
+    <Compile Include="TrainingJournal.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingJournalDB.Context.tt</DependentUpon>
+      <DependentUpon>TrainingJournal.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingJournalDB.cs">
+    <Compile Include="TrainingJournal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
     </Compile>
-    <Compile Include="TrainingJournalDB.Designer.cs">
+    <Compile Include="TrainingJournal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
+      <DependentUpon>TrainingJournal.edmx</DependentUpon>
     </Compile>
     <Compile Include="TrainJournal.cs">
-      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAntropometry.cs">
-      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
     </Compile>
     <Compile Include="UserInvalidExeption.cs" />
     <Compile Include="Views\AddExercise.xaml.cs">
@@ -238,8 +253,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WaistTable.cs">
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Weight.cs">
-      <DependentUpon>TrainingJournalDB.tt</DependentUpon>
+      <DependentUpon>TrainingJournal.tt</DependentUpon>
     </Compile>
     <Compile Include="WordDocument.cs" />
     <Compile Include="WordSelection.cs" />
@@ -360,13 +378,13 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="TrainingJournalDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrainingJournalDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Resource Include="Resources\Entypo.ttf" />
-    <None Include="TrainingJournalDB.edmx.diagram">
-      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
+    <EntityDeploy Include="TrainingJournal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TrainingJournal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TrainingJournal.edmx.diagram">
+      <DependentUpon>TrainingJournal.edmx</DependentUpon>
     </None>
     <None Include="TrainingJournal_TemporaryKey.pfx" />
   </ItemGroup>
@@ -439,15 +457,15 @@
     <Content Include="HTMLPages\UserAntropometry.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TrainingJournalDB.Context.tt">
+    <Content Include="TrainingJournal.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
-      <LastGenOutput>TrainingJournalDB.Context.cs</LastGenOutput>
+      <DependentUpon>TrainingJournal.edmx</DependentUpon>
+      <LastGenOutput>TrainingJournal.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="TrainingJournalDB.tt">
+    <Content Include="TrainingJournal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrainingJournalDB.edmx</DependentUpon>
-      <LastGenOutput>TrainingJournalDB.cs</LastGenOutput>
+      <DependentUpon>TrainingJournal.edmx</DependentUpon>
+      <LastGenOutput>TrainingJournal.cs</LastGenOutput>
     </Content>
     <Content Include="TrainJournal.edmx.sql" />
   </ItemGroup>
