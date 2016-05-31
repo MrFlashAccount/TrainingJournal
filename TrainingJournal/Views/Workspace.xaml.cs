@@ -28,6 +28,7 @@ namespace TrainingJournal.Views
 
             NameTextBlock.DataContext = _session.LoginedUser;
 
+            Fill1CRPmaxesDataGrid();
             FillNeckDataGrid();
             FillChestDataGrid();
             FillArmsDataGrid();
@@ -39,6 +40,25 @@ namespace TrainingJournal.Views
             Avatar.DataContext = _session;
         }
 
+        // ReSharper disable once InconsistentNaming
+        private void Fill1CRPmaxesDataGrid()
+        {
+            C1RPmaxesDataGrid.ItemsSource = null;
+            C1RPmaxesDataGrid.ItemsSource = _session.C1RPmaxes.ToArray().Reverse().ToList();
+
+            if (_session.C1RPmaxes.Count == 0)
+            {
+                SquatTextBox.Text = "нет";
+                BenchPressTextBlock.Text = "нет";
+                DeadliftTextBox.Text = "нет";
+                return;
+            }
+
+            SquatTextBox.Text = $"{_session.C1RPmaxes.Last().Squat} кг.";
+            BenchPressTextBlock.Text = $"{_session.C1RPmaxes.Last().BenchPress} кг.";
+            DeadliftTextBox.Text = $"{_session.C1RPmaxes.Last().Deadlift} кг.";
+
+        }
         private void FillNeckDataGrid()
         {
             NechDataGrid.ItemsSource = null;
@@ -118,7 +138,6 @@ namespace TrainingJournal.Views
 
             ShinTextBlock.Text = $"{_session.ShinTables.Last().Shin} см.";
         }
-
         private void FillWeightHistoryDg()
         {
             WeightDataGrid.ItemsSource = null;
@@ -134,7 +153,6 @@ namespace TrainingJournal.Views
             WeightTextBox.Text = $"{_session.UserWeights.Last().Weight1} кг.";
             FatPercentTextBox.Text = $"{_session.UserWeights.Last().FatPercent} %";
         }
-
         private void FillTrainJournalContent()
         {
             try
@@ -413,6 +431,26 @@ namespace TrainingJournal.Views
             ShinNumericUpDown.Value = null;
 
             FillShinDataGrid();
+        }
+
+        private void SaveC1RPmaxesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            C1RPmax c1RPmax = new C1RPmax()
+            {
+                Login = _session.LoginedUser.Identificator,
+                Squat = (float)Convert.ToDouble(SquatValueNumericUpDown.Value ?? 0),
+                BenchPress = (float)Convert.ToDouble(BenchPressValueNumericUpDown.Value ?? 0),
+                Deadlift = (float)Convert.ToDouble(DeadliftValueNumericUpDown.Value ?? 0),
+                Date = DateTime.Today
+            };
+
+            _session.C1RPmaxes = new List<C1RPmax> { c1RPmax };
+
+            SquatValueNumericUpDown.Value = null;
+            BenchPressValueNumericUpDown.Value = null;
+            DeadliftValueNumericUpDown.Value = null;
+
+            Fill1CRPmaxesDataGrid();
         }
     }
 }

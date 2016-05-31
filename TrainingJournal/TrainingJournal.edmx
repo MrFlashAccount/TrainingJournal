@@ -16,14 +16,9 @@
           <Property Name="Squat" Type="real" Nullable="false" />
           <Property Name="Deadlift" Type="real" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "TrainJournal.dbo.ArmTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="ArmTable">
           <Key>
             <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Arm" />
-            <PropertyRef Name="Login" />
           </Key>
           <Property Name="Identificator" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
@@ -39,14 +34,9 @@
           <Property Name="Chest" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "TrainJournal.dbo.HipTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="HipTable">
           <Key>
             <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Hip" />
-            <PropertyRef Name="Login" />
           </Key>
           <Property Name="Identificator" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
@@ -62,14 +52,9 @@
           <Property Name="Neck" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "TrainJournal.dbo.ShinTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="ShinTable">
           <Key>
             <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Shin" />
-            <PropertyRef Name="Login" />
           </Key>
           <Property Name="Identificator" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
@@ -98,14 +83,9 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "TrainJournal.dbo.WaistTable" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="WaistTable">
           <Key>
             <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Waist" />
-            <PropertyRef Name="Login" />
           </Key>
           <Property Name="Identificator" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
@@ -234,43 +214,15 @@
         </Association>
         <EntityContainer Name="Хранилище TrainJournalModelContainer">
           <EntitySet Name="1RPmax" EntityType="Self.1RPmax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArmTable" EntityType="Self.ArmTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChestTable" EntityType="Self.ChestTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HipTable" EntityType="Self.HipTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NeckTable" EntityType="Self.NeckTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShinTable" EntityType="Self.ShinTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrainJournal" EntityType="Self.TrainJournal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaistTable" EntityType="Self.WaistTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Weight" EntityType="Self.Weight" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ArmTable" EntityType="Self.ArmTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ArmTable].[Identificator] AS [Identificator], 
-    [ArmTable].[Date] AS [Date], 
-    [ArmTable].[Arm] AS [Arm], 
-    [ArmTable].[Login] AS [Login]
-    FROM [dbo].[ArmTable] AS [ArmTable]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="HipTable" EntityType="Self.HipTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [HipTable].[Identificator] AS [Identificator], 
-    [HipTable].[Date] AS [Date], 
-    [HipTable].[Hip] AS [Hip], 
-    [HipTable].[Login] AS [Login]
-    FROM [dbo].[HipTable] AS [HipTable]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ShinTable" EntityType="Self.ShinTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ShinTable].[Identificator] AS [Identificator], 
-    [ShinTable].[Date] AS [Date], 
-    [ShinTable].[Shin] AS [Shin], 
-    [ShinTable].[Login] AS [Login]
-    FROM [dbo].[ShinTable] AS [ShinTable]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="WaistTable" EntityType="Self.WaistTable" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [WaistTable].[Identificator] AS [Identificator], 
-    [WaistTable].[Date] AS [Date], 
-    [WaistTable].[Waist] AS [Waist], 
-    [WaistTable].[Login] AS [Login]
-    FROM [dbo].[WaistTable] AS [WaistTable]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_1RPmax_User" Association="Self.FK_1RPmax_User">
             <End Role="User" EntitySet="User" />
             <End Role="1RPmax" EntitySet="1RPmax" />
@@ -325,6 +277,16 @@
           <Property Name="Deadlift" Type="Single" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_1RPmax_User" FromRole="C1RPmax" ToRole="User" />
         </EntityType>
+        <EntityType Name="ArmTable">
+          <Key>
+            <PropertyRef Name="Identificator" />
+          </Key>
+          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Arm" Type="Single" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ArmTable_User" FromRole="ArmTable" ToRole="User" />
+        </EntityType>
         <EntityType Name="ChestTable">
           <Key>
             <PropertyRef Name="Identificator" />
@@ -335,6 +297,16 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_ChestTable_User" FromRole="ChestTable" ToRole="User" />
         </EntityType>
+        <EntityType Name="HipTable">
+          <Key>
+            <PropertyRef Name="Identificator" />
+          </Key>
+          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hip" Type="Single" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_HipTable_User" FromRole="HipTable" ToRole="User" />
+        </EntityType>
         <EntityType Name="NeckTable">
           <Key>
             <PropertyRef Name="Identificator" />
@@ -344,6 +316,16 @@
           <Property Name="Neck" Type="Single" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_NeckTable_User" FromRole="NeckTable" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ShinTable">
+          <Key>
+            <PropertyRef Name="Identificator" />
+          </Key>
+          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Shin" Type="Single" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ShinTable_User" FromRole="ShinTable" ToRole="User" />
         </EntityType>
         <EntityType Name="TrainJournal">
           <Key>
@@ -368,14 +350,24 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="C1RPmax" Relationship="Self.FK_1RPmax_User" FromRole="User" ToRole="C1RPmax" />
-          <NavigationProperty Name="ChestTables" Relationship="Self.FK_ChestTable_User" FromRole="User" ToRole="ChestTable" />
-          <NavigationProperty Name="NeckTables" Relationship="Self.FK_NeckTable_User" FromRole="User" ToRole="NeckTable" />
-          <NavigationProperty Name="TrainJournals" Relationship="Self.FK_TrainJournal_User" FromRole="User" ToRole="TrainJournal" />
           <NavigationProperty Name="ArmTables" Relationship="Self.FK_ArmTable_User" FromRole="User" ToRole="ArmTable" />
+          <NavigationProperty Name="ChestTables" Relationship="Self.FK_ChestTable_User" FromRole="User" ToRole="ChestTable" />
           <NavigationProperty Name="HipTables" Relationship="Self.FK_HipTable_User" FromRole="User" ToRole="HipTable" />
+          <NavigationProperty Name="NeckTables" Relationship="Self.FK_NeckTable_User" FromRole="User" ToRole="NeckTable" />
           <NavigationProperty Name="ShinTables" Relationship="Self.FK_ShinTable_User" FromRole="User" ToRole="ShinTable" />
+          <NavigationProperty Name="TrainJournals" Relationship="Self.FK_TrainJournal_User" FromRole="User" ToRole="TrainJournal" />
           <NavigationProperty Name="WaistTables" Relationship="Self.FK_WaistTable_User" FromRole="User" ToRole="WaistTable" />
           <NavigationProperty Name="Weights" Relationship="Self.FK_Weight_User" FromRole="User" ToRole="Weight" />
+        </EntityType>
+        <EntityType Name="WaistTable">
+          <Key>
+            <PropertyRef Name="Identificator" />
+          </Key>
+          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Waist" Type="Single" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WaistTable_User" FromRole="WaistTable" ToRole="User" />
         </EntityType>
         <EntityType Name="Weight">
           <Key>
@@ -388,58 +380,6 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="Self.FK_Weight_User" FromRole="Weight" ToRole="User" />
         </EntityType>
-        <EntityType Name="ArmTable">
-          <Key>
-            <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Arm" />
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Arm" Type="Single" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ArmTable_User" FromRole="ArmTable" ToRole="User" />
-        </EntityType>
-        <EntityType Name="HipTable">
-          <Key>
-            <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Hip" />
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Hip" Type="Single" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_HipTable_User" FromRole="HipTable" ToRole="User" />
-        </EntityType>
-        <EntityType Name="ShinTable">
-          <Key>
-            <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Shin" />
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Shin" Type="Single" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ShinTable_User" FromRole="ShinTable" ToRole="User" />
-        </EntityType>
-        <EntityType Name="WaistTable">
-          <Key>
-            <PropertyRef Name="Identificator" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Waist" />
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Waist" Type="Single" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_WaistTable_User" FromRole="WaistTable" ToRole="User" />
-        </EntityType>
         <Association Name="FK_1RPmax_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="C1RPmax" Type="Self.C1RPmax" Multiplicity="*" />
@@ -448,42 +388,6 @@
               <PropertyRef Name="Identificator" />
             </Principal>
             <Dependent Role="C1RPmax">
-              <PropertyRef Name="Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ChestTable_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="ChestTable" Type="Self.ChestTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Identificator" />
-            </Principal>
-            <Dependent Role="ChestTable">
-              <PropertyRef Name="Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NeckTable_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="NeckTable" Type="Self.NeckTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Identificator" />
-            </Principal>
-            <Dependent Role="NeckTable">
-              <PropertyRef Name="Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TrainJournal_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="TrainJournal" Type="Self.TrainJournal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Identificator" />
-            </Principal>
-            <Dependent Role="TrainJournal">
               <PropertyRef Name="Login" />
             </Dependent>
           </ReferentialConstraint>
@@ -500,6 +404,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ChestTable_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ChestTable" Type="Self.ChestTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Identificator" />
+            </Principal>
+            <Dependent Role="ChestTable">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HipTable_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="HipTable" Type="Self.HipTable" Multiplicity="*" />
@@ -512,6 +428,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NeckTable_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="NeckTable" Type="Self.NeckTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Identificator" />
+            </Principal>
+            <Dependent Role="NeckTable">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ShinTable_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="ShinTable" Type="Self.ShinTable" Multiplicity="*" />
@@ -520,6 +448,18 @@
               <PropertyRef Name="Identificator" />
             </Principal>
             <Dependent Role="ShinTable">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainJournal_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="TrainJournal" Type="Self.TrainJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Identificator" />
+            </Principal>
+            <Dependent Role="TrainJournal">
               <PropertyRef Name="Login" />
             </Dependent>
           </ReferentialConstraint>
@@ -550,44 +490,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TrainJournalEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TrainJournalEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C1RPmax" EntityType="Self.C1RPmax" />
+          <EntitySet Name="ArmTables" EntityType="Self.ArmTable" />
           <EntitySet Name="ChestTables" EntityType="Self.ChestTable" />
+          <EntitySet Name="HipTables" EntityType="Self.HipTable" />
           <EntitySet Name="NeckTables" EntityType="Self.NeckTable" />
+          <EntitySet Name="ShinTables" EntityType="Self.ShinTable" />
           <EntitySet Name="TrainJournals" EntityType="Self.TrainJournal" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Weights" EntityType="Self.Weight" />
-          <EntitySet Name="ArmTables" EntityType="Self.ArmTable" />
-          <EntitySet Name="HipTables" EntityType="Self.HipTable" />
-          <EntitySet Name="ShinTables" EntityType="Self.ShinTable" />
           <EntitySet Name="WaistTables" EntityType="Self.WaistTable" />
+          <EntitySet Name="Weights" EntityType="Self.Weight" />
           <AssociationSet Name="FK_1RPmax_User" Association="Self.FK_1RPmax_User">
             <End Role="User" EntitySet="Users" />
             <End Role="C1RPmax" EntitySet="C1RPmax" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChestTable_User" Association="Self.FK_ChestTable_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ChestTable" EntitySet="ChestTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NeckTable_User" Association="Self.FK_NeckTable_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="NeckTable" EntitySet="NeckTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TrainJournal_User" Association="Self.FK_TrainJournal_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="TrainJournal" EntitySet="TrainJournals" />
           </AssociationSet>
           <AssociationSet Name="FK_ArmTable_User" Association="Self.FK_ArmTable_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ArmTable" EntitySet="ArmTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_ChestTable_User" Association="Self.FK_ChestTable_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChestTable" EntitySet="ChestTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_HipTable_User" Association="Self.FK_HipTable_User">
             <End Role="User" EntitySet="Users" />
             <End Role="HipTable" EntitySet="HipTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_NeckTable_User" Association="Self.FK_NeckTable_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NeckTable" EntitySet="NeckTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_ShinTable_User" Association="Self.FK_ShinTable_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ShinTable" EntitySet="ShinTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainJournal_User" Association="Self.FK_TrainJournal_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TrainJournal" EntitySet="TrainJournals" />
           </AssociationSet>
           <AssociationSet Name="FK_WaistTable_User" Association="Self.FK_WaistTable_User">
             <End Role="User" EntitySet="Users" />
@@ -603,7 +543,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище TrainJournalModelContainer" CdmEntityContainer="TrainJournalEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TrainJournalModelContainer" CdmEntityContainer="TrainJournalEntities1">
           <EntitySetMapping Name="C1RPmax">
             <EntityTypeMapping TypeName="TrainJournalModel.C1RPmax">
               <MappingFragment StoreEntitySet="1RPmax">
@@ -613,6 +553,16 @@
                 <ScalarProperty Name="BenchPress" ColumnName="BenchPress" />
                 <ScalarProperty Name="Squat" ColumnName="Squat" />
                 <ScalarProperty Name="Deadlift" ColumnName="Deadlift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArmTables">
+            <EntityTypeMapping TypeName="TrainJournalModel.ArmTable">
+              <MappingFragment StoreEntitySet="ArmTable">
+                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Arm" ColumnName="Arm" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -626,12 +576,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="HipTables">
+            <EntityTypeMapping TypeName="TrainJournalModel.HipTable">
+              <MappingFragment StoreEntitySet="HipTable">
+                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Hip" ColumnName="Hip" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NeckTables">
             <EntityTypeMapping TypeName="TrainJournalModel.NeckTable">
               <MappingFragment StoreEntitySet="NeckTable">
                 <ScalarProperty Name="Identificator" ColumnName="Identificator" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Neck" ColumnName="Neck" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShinTables">
+            <EntityTypeMapping TypeName="TrainJournalModel.ShinTable">
+              <MappingFragment StoreEntitySet="ShinTable">
+                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Shin" ColumnName="Shin" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -660,6 +630,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WaistTables">
+            <EntityTypeMapping TypeName="TrainJournalModel.WaistTable">
+              <MappingFragment StoreEntitySet="WaistTable">
+                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Waist" ColumnName="Waist" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Weights">
             <EntityTypeMapping TypeName="TrainJournalModel.Weight">
               <MappingFragment StoreEntitySet="Weight">
@@ -668,46 +648,6 @@
                 <ScalarProperty Name="Weight1" ColumnName="Weight" />
                 <ScalarProperty Name="FatPercent" ColumnName="FatPercent" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ArmTables">
-            <EntityTypeMapping TypeName="TrainJournalModel.ArmTable">
-              <MappingFragment StoreEntitySet="ArmTable">
-                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Arm" ColumnName="Arm" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HipTables">
-            <EntityTypeMapping TypeName="TrainJournalModel.HipTable">
-              <MappingFragment StoreEntitySet="HipTable">
-                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Hip" ColumnName="Hip" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ShinTables">
-            <EntityTypeMapping TypeName="TrainJournalModel.ShinTable">
-              <MappingFragment StoreEntitySet="ShinTable">
-                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Shin" ColumnName="Shin" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WaistTables">
-            <EntityTypeMapping TypeName="TrainJournalModel.WaistTable">
-              <MappingFragment StoreEntitySet="WaistTable">
-                <ScalarProperty Name="Identificator" ColumnName="Identificator" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Waist" ColumnName="Waist" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

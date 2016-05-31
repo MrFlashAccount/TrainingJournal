@@ -74,10 +74,11 @@
                                                    TextAlignment="Center"
                                                    Text="{Binding Name}"
                                                    VerticalAlignment="Center" />
-
+                                        
                                         <StackPanel Grid.Row="1"
                                                     Grid.Column="1"
                                                     Grid.ColumnSpan="2">
+                                            <Border Margin="0,5" BorderBrush="CornflowerBlue" BorderThickness="1"/>
                                             <Expander Header="Вес и процент жира"
                                                       Margin="0,5">
                                                 <StackPanel>
@@ -121,6 +122,63 @@
                                                             <DataGridTextColumn Header="Процент жира"
                                                                                 Width="*"
                                                                                 Binding="{Binding FatPercent}" />
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Expander>
+                                            <Expander Header="Силовые показатели"
+                                                      Margin="0,5">
+                                                <StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Сегодня"
+                                                                   FontSize="{StaticResource NormalFontSize}"
+                                                                   Margin="5"
+                                                                   VerticalAlignment="Center" />
+                                                        <custom:NumericUpDown Name="SquatValueNumericUpDown"
+                                                                              Margin="5"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              StringFormat="F1"
+                                                                              Minimum="0"
+                                                                              custom:TextBoxHelper.Watermark="Присед"
+                                                                              HideUpDownButtons="True" />
+                                                        <custom:NumericUpDown Name="BenchPressValueNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              Maximum="999"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Жим лежа"
+                                                                              HideUpDownButtons="True" />
+                                                        <custom:NumericUpDown Name="DeadliftValueNumericUpDown"
+                                                                              Margin="5"
+                                                                              Minimum="0"
+                                                                              Maximum="999"
+                                                                              FontSize="{StaticResource NormalFontSize}"
+                                                                              custom:TextBoxHelper.Watermark="Становая тяга"
+                                                                              HideUpDownButtons="True" />
+                                                        <Button Name="SaveC1RPmaxesButton"
+                                                                Content="Записать"
+                                                                Margin="5"
+                                                                Click="SaveC1RPmaxesButton_OnClick" />
+                                                    </StackPanel>
+                                                    <DataGrid Name="C1RPmaxesDataGrid"
+                                                              IsReadOnly="True"
+                                                              AutoGenerateColumns="False"
+                                                              CanUserDeleteRows="False"
+                                                              CanUserAddRows="False" MaxHeight="200"
+                                                              VerticalAlignment="Top">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Дата"
+                                                                                Width="*"
+                                                                                Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                                                            <DataGridTextColumn Header="Присед"
+                                                                                Width="*"
+                                                                                Binding="{Binding Squat}" />
+                                                            <DataGridTextColumn Header="Жим лежа"
+                                                                                Width="*"
+                                                                                Binding="{Binding BenchPress}" />
+                                                            <DataGridTextColumn Header="Становая тяга"
+                                                                                Width="*"
+                                                                                Binding="{Binding Deadlift}" />
                                                         </DataGrid.Columns>
                                                     </DataGrid>
                                                 </StackPanel>
@@ -509,7 +567,7 @@
                                                                Grid.Row="0"
                                                                Grid.Column="1"
                                                                Margin="5,5,5,5"
-                                                               Width="40"
+                                                               TextAlignment="Center"
                                                                Text="{Binding BenchPress}"
                                                                VerticalAlignment="Center" />
 
@@ -523,7 +581,7 @@
                                                                Grid.Row="1"
                                                                Grid.Column="1"
                                                                Margin="5,5,5,5"
-                                                               Width="40"
+                                                               TextAlignment="Center"
                                                                Text="{Binding Squats}"
                                                                VerticalAlignment="Center" />
 
@@ -531,37 +589,40 @@
                                                                Grid.Row="2"
                                                                Grid.Column="0"
                                                                Margin="20,5"
-                                                               VerticalAlignment="Top"
+                                                               VerticalAlignment="Center"
                                                                Text="Становая тяга" />
                                                     <TextBlock x:Name="DeadliftTextBox"
                                                                Grid.Row="2"
                                                                Grid.Column="1"
                                                                Margin="5,5,5,5"
+                                                               TextAlignment="Center"
                                                                VerticalAlignment="Center" />
 
                                                     <TextBlock x:Name="WeightCategoryLabel"
                                                                Grid.Row="3"
                                                                Grid.Column="0"
                                                                Margin="20,5"
-                                                               VerticalAlignment="Top"
+                                                               VerticalAlignment="Center"
                                                                Text="В/к" />
                                                     <TextBlock x:Name="WeightCategoryTextBlock"
-                                                               Grid.Row="4"
+                                                               Grid.Row="3"
                                                                Grid.Column="1"
                                                                Margin="5,5,5,5"
-                                                               VerticalAlignment="Center" />
+                                                               VerticalAlignment="Center" 
+                                                               TextAlignment="Center"/>
 
                                                     <TextBlock x:Name="RankLabel"
                                                                Grid.Row="4"
                                                                Grid.Column="0"
                                                                Margin="20,5"
-                                                               VerticalAlignment="Top"
+                                                               VerticalAlignment="Center"
                                                                Text="Разряд" />
                                                     <TextBlock x:Name="RankTextBlock"
                                                                Grid.Row="4"
                                                                Grid.Column="1"
                                                                Margin="5,5,5,5"
-                                                               VerticalAlignment="Center" />
+                                                               VerticalAlignment="Center"
+                                                               TextAlignment="Center"/>
                                                 </Grid>
                                             </GroupBox>
                                         </StackPanel>

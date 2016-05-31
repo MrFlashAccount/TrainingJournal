@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using MahApps.Metro.Controls;
 
@@ -20,7 +21,7 @@ namespace TrainingJournal.Views
             InitializeComponent();
             _session = session;
             _holder = holder;
-            ExerciseExpander.Header = date;
+            ExerciseExpander.Header = date.ToString("D", CultureInfo.CurrentCulture);
             _trainJournals = trainJournals;
             ControlDateTime = date;
 

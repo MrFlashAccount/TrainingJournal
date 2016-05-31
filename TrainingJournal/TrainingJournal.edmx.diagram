@@ -4,29 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1ef3664891844ecf936441c52f309e2f" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="TrainJournalModel.C1RPmax" Width="1.5" PointX="9.875" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.ChestTable" Width="1.5" PointX="7.875" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.NeckTable" Width="1.5" PointX="6.125" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.TrainJournal" Width="1.5" PointX="5.625" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.User" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.Weight" Width="1.5" PointX="11.5" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.ArmTable" Width="1.5" PointX="11.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.HipTable" Width="1.5" PointX="13.125" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.ShinTable" Width="1.5" PointX="5.625" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrainJournalModel.WaistTable" Width="1.5" PointX="3.875" PointY="10" IsExpanded="true" />
+      <Diagram DiagramId="95f000341a91464fb77ae25f9c28cd16" Name="Diagram1">
+        <EntityTypeShape EntityType="TrainJournalModel.C1RPmax" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.ArmTable" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.ChestTable" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.HipTable" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.NeckTable" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.ShinTable" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.TrainJournal" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.User" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.WaistTable" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrainJournalModel.Weight" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
         <AssociationConnector Association="TrainJournalModel.FK_1RPmax_User" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainJournalModel.FK_ChestTable_User" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainJournalModel.FK_NeckTable_User" ManuallyRouted="true" >
-          <ConnectorPoint PointX="8.75" PointY="8.7535681306543669" />
-          <ConnectorPoint PointX="7.3841165165609333" PointY="8.7535681306543669" />
-          <ConnectorPoint PointX="7.3841165165609333" PointY="8.2302864583333317" />
-        </AssociationConnector>
-        <AssociationConnector Association="TrainJournalModel.FK_TrainJournal_User" ManuallyRouted="false" />
         <AssociationConnector Association="TrainJournalModel.FK_ArmTable_User" ManuallyRouted="false" />
-        <AssociationConnector Association="TrainJournalModel.FK_HipTable_User" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="TrainJournalModel.FK_ChestTable_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainJournalModel.FK_HipTable_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainJournalModel.FK_NeckTable_User" ManuallyRouted="false" />
         <AssociationConnector Association="TrainJournalModel.FK_ShinTable_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TrainJournalModel.FK_TrainJournal_User" ManuallyRouted="false" />
         <AssociationConnector Association="TrainJournalModel.FK_WaistTable_User" ManuallyRouted="false" />
         <AssociationConnector Association="TrainJournalModel.FK_Weight_User" ManuallyRouted="false" />
       </Diagram>

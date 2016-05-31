@@ -206,7 +206,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oPnASlU+yaTAHreipgho5UFIQx4VVm7te4sxSl/ULyk=</dsig:DigestValue>
+        <dsig:DigestValue>h8bNVge734PrPhrPJCtqkwTi+mA63OFNyXIjJCwHGaE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -336,13 +336,13 @@
       <dsig:DigestValue>TeSMoQCyi9YgGLJhspCm060NamolDbrul6iqjKbaPPk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TrainingJournal.exe.config" size="998">
+  <file name="TrainingJournal.exe.config" size="1004">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LjAW6IgbxVdOnlb+vQLeB6f8iAb8075FI0cuznYl1qU=</dsig:DigestValue>
+      <dsig:DigestValue>D2F+62ovb/v5Z3cFbbTBBS13tJ5R8l5UQ1Ez6mItvuI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TrainingJournal.tt" size="25284">
