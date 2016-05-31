@@ -7,98 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace TrainingJournal
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TrainJournal : INotifyPropertyChanged
+    public partial class TrainJournal
     {
-        private string _name;
-        private int _numOfSets;
-        private int _numOfReps;
-        private float _weight;
-        private string _comment;
-
         public int Identificator { get; set; }
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public string Name { get; set; }
         public string Login { get; set; }
         public System.DateTime Date { get; set; }
-
-        public int NumOfSets
-        {
-            get
-            {
-                return _numOfSets;
-            }
-            set
-            {
-                _numOfSets = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int NumOfReps
-        {
-            get
-            {
-                return _numOfReps;
-            }
-            set
-            {
-                _numOfReps = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public float Weight
-        {
-            get
-            {
-                return _weight;
-            }
-            set
-            {
-                _weight = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Comment
-        {
-            get
-            {
-                return _comment;
-            }
-            set
-            {
-                _comment = value;
-                OnPropertyChanged();
-            }
-        }
-
+        public int NumOfSets { get; set; }
+        public int NumOfReps { get; set; }
+        public float Weight { get; set; }
+        public string Comment { get; set; }
+    
         public virtual User User { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

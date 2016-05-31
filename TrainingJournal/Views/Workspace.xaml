@@ -632,26 +632,123 @@
                         </ScrollViewer>
                     </TabItem>
                     
-                    <TabItem Header="Графики">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0">
-                                <!--<oxy:Plot Name="WeightOxyPlot" 
-                                          Title="Вес"
-                                          Margin="5">
-                                    <oxy:Plot.Series>
-                                        <oxy:LineSeries ItemsSource="{Binding Points}"/>
-                                    </oxy:Plot.Series>
-                                </oxy:Plot>-->
-                            </StackPanel>
-                            
-                            <StackPanel Grid.Column="1">
+                    <TabItem Header="Графики" Loaded="TabItem_Loaded">
+                        <ScrollViewer>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
                                 
-                            </StackPanel>
-                        </Grid>
+                                <StackPanel Grid.Column="0">
+                                    <oxy:Plot Name="WeightOxyPlot"
+                                              Title="Вес"
+                                              MinHeight="300"
+                                              Margin="5" 
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="WeightLineSeries" ItemsSource="{Binding weights}" />
+                                            <oxy:LineSeries Name="FatPercentLineSeries"
+                                                            ItemsSource="{Binding fatPercents}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="NeckOxyPlot"
+                                              Title="Шея"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="NeckLineSeries" ItemsSource="{Binding necks}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="ChestOxyPlot"
+                                              Title="Грудь"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="ChestLineSeries" ItemsSource="{Binding chests}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="ArmOxyPlot"
+                                              Title="Руки"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="ArmLineSeries" ItemsSource="{Binding arms}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="WaistOxyPlot"
+                                              Title="Талия"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="WaistLineSeries" ItemsSource="{Binding waists}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <oxy:Plot Name="HipOxyPlot"
+                                              Title="Бедра"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="HipLineSeries" ItemsSource="{Binding hips}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="ShinOxyPlot"
+                                              Title="Голень"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="ShinLineSeries" ItemsSource="{Binding shins}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="BenchPressOxyPlot"
+                                              Title="Жим лежа"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="BenchPressLineSeries" ItemsSource="{Binding benchPresses}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="SquatOxyPlot"
+                                              Title="Присед"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="SquatLineSeries" ItemsSource="{Binding squats}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                    <oxy:Plot Name="DeadliftOxyPlot"
+                                              Title="Становая тяга"
+                                              MinHeight="300"
+                                              Margin="5"
+                                              IsManipulationEnabled="False"
+                                              IsMouseWheelEnabled="False">
+                                        <oxy:Plot.Series>
+                                            <oxy:LineSeries Name="DeadliftLineSeries" ItemsSource="{Binding deadlifts}" />
+                                        </oxy:Plot.Series>
+                                    </oxy:Plot>
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
                     </TabItem>
                 </TabControl>
             </TabItem>

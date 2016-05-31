@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="int" Nullable="false" />
+          <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Arm" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="int" Nullable="false" />
+          <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Hip" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -56,7 +56,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="int" Nullable="false" />
+          <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Shin" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -87,7 +87,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="int" Nullable="false" />
+          <Property Name="Identificator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Waist" Type="real" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -281,7 +281,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Arm" Type="Single" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -301,7 +301,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Hip" Type="Single" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -321,7 +321,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Shin" Type="Single" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -363,7 +363,7 @@
           <Key>
             <PropertyRef Name="Identificator" />
           </Key>
-          <Property Name="Identificator" Type="Int32" Nullable="false" />
+          <Property Name="Identificator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Waist" Type="Single" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -490,7 +490,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TrainJournalEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TrainJournalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C1RPmax" EntityType="Self.C1RPmax" />
           <EntitySet Name="ArmTables" EntityType="Self.ArmTable" />
           <EntitySet Name="ChestTables" EntityType="Self.ChestTable" />
@@ -543,7 +543,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище TrainJournalModelContainer" CdmEntityContainer="TrainJournalEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TrainJournalModelContainer" CdmEntityContainer="TrainJournalEntities">
           <EntitySetMapping Name="C1RPmax">
             <EntityTypeMapping TypeName="TrainJournalModel.C1RPmax">
               <MappingFragment StoreEntitySet="1RPmax">

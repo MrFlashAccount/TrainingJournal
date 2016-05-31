@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using OxyPlot;
 using TrainingJournal.HelpPages;
 using WPFPageSwitch;
 
@@ -19,6 +20,19 @@ namespace TrainingJournal.Views
         private readonly MetroWindow _holder;
 
         public List<UserAntropometry> UserAntropometries;
+
+        public List<DataPoint> weights { get; private set; }
+        public List<DataPoint> fatPercents { get; private set; }
+        public List<DataPoint> necks { get; private set; }
+        public List<DataPoint> chests { get; private set; }
+        public List<DataPoint> arms { get; private set; }
+        public List<DataPoint> waists { get; private set; }
+        public List<DataPoint> hips { get; private set; }
+        public List<DataPoint> shins { get; private set; }
+        public List<DataPoint> benchPresses { get; private set; }
+        public List<DataPoint> squats { get; private set; }
+        public List<DataPoint> deadlifts { get; private set; }
+
 
         public Workspace(MetroWindow holder, Session session)
         {
@@ -38,6 +52,8 @@ namespace TrainingJournal.Views
             FillWeightHistoryDg();
 
             Avatar.DataContext = _session;
+
+            
         }
 
         // ReSharper disable once InconsistentNaming
@@ -451,6 +467,33 @@ namespace TrainingJournal.Views
             DeadliftValueNumericUpDown.Value = null;
 
             Fill1CRPmaxesDataGrid();
+        }
+
+        private void TabItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            weights = _session.UserWeights.Select(weight => new DataPoint(weight.Identificator, weight.Weight1)).ToList();
+            fatPercents = _session.UserWeights.Select(weight => new DataPoint(weight.Identificator, weight.FatPercent ?? 0)).ToList();
+            necks = _session.NeckTables.Select(neck => new DataPoint(neck.Identificator, neck.Neck)).ToList();
+            chests = _session.ChestTables.Select(chest => new DataPoint(chest.Identificator, chest.Chest)).ToList();
+            arms = _session.ArmTables.Select(arm => new DataPoint(arm.Identificator, arm.Arm)).ToList();
+            waists = _session.WaistTables.Select(waist => new DataPoint(waist.Identificator, waist.Waist)).ToList();
+            hips = _session.HipTables.Select(hip => new DataPoint(hip.Identificator, hip.Hip)).ToList();
+            shins = _session.ShinTables.Select(shin => new DataPoint(shin.Identificator, shin.Shin)).ToList();
+            benchPresses = _session.C1RPmaxes.Select(benchPress => new DataPoint(benchPress.Identificator, benchPress.BenchPress)).ToList();
+            squats = _session.C1RPmaxes.Select(squat => new DataPoint(squat.Identificator, squat.Squat)).ToList();
+            deadlifts = _session.C1RPmaxes.Select(deadlift => new DataPoint(deadlift.Identificator, deadlift.Deadlift)).ToList();
+
+            WeightLineSeries.DataContext = this;
+            FatPercentLineSeries.DataContext = this;
+            NeckLineSeries.DataContext = this;
+            ChestLineSeries.DataContext = this;
+            ArmLineSeries.DataContext = this;
+            WaistLineSeries.DataContext = this;
+            HipLineSeries.DataContext = this;
+            ShinLineSeries.DataContext = this;
+            BenchPressLineSeries.DataContext = this;
+            SquatLineSeries.DataContext = this;
+            DeadliftLineSeries.DataContext = this;
         }
     }
 }

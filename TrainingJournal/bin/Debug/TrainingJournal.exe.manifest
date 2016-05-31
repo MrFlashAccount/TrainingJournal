@@ -199,14 +199,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3646424">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TrainingJournal.exe" size="3653592">
       <assemblyIdentity name="TrainingJournal" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h8bNVge734PrPhrPJCtqkwTi+mA63OFNyXIjJCwHGaE=</dsig:DigestValue>
+        <dsig:DigestValue>Sqcr0u3Q+DdzzJwn5uZCUzdoHhavztvXIEhJQajEJoM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -336,13 +336,13 @@
       <dsig:DigestValue>TeSMoQCyi9YgGLJhspCm060NamolDbrul6iqjKbaPPk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TrainingJournal.exe.config" size="1004">
+  <file name="TrainingJournal.exe.config" size="987">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>D2F+62ovb/v5Z3cFbbTBBS13tJ5R8l5UQ1Ez6mItvuI=</dsig:DigestValue>
+      <dsig:DigestValue>iNmWziJRuU5AI1xigJmB7n1NCfGf812KEvBs0i89yOE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="TrainingJournal.tt" size="25284">

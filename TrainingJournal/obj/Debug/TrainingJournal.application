@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="TrainingJournal.exe.manifest" size="19099">
+    <dependentAssembly dependencyType="install" codebase="TrainingJournal.exe.manifest" size="19098">
       <assemblyIdentity name="TrainingJournal.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="ru-RU" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>x2W2e1OyQsa/lHuRjWgj4vg7muCzR/LGuT9R6/xdUxI=</dsig:DigestValue>
+        <dsig:DigestValue>bJHc58R6tCFVHEN+AXsCk/6aGFBkub2AFoaaCl07y/I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

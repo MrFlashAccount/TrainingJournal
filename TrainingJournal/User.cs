@@ -7,53 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace TrainingJournal
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User : INotifyPropertyChanged
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            C1RPmax = new HashSet<C1RPmax>();
-            ArmTables = new HashSet<ArmTable>();
-            ChestTables = new HashSet<ChestTable>();
-            HipTables = new HashSet<HipTable>();
-            NeckTables = new HashSet<NeckTable>();
-            ShinTables = new HashSet<ShinTable>();
-            TrainJournals = new HashSet<TrainJournal>();
-            WaistTables = new HashSet<WaistTable>();
-            Weights = new HashSet<Weight>();
+            this.C1RPmax = new HashSet<C1RPmax>();
+            this.ArmTables = new HashSet<ArmTable>();
+            this.ChestTables = new HashSet<ChestTable>();
+            this.HipTables = new HashSet<HipTable>();
+            this.NeckTables = new HashSet<NeckTable>();
+            this.ShinTables = new HashSet<ShinTable>();
+            this.TrainJournals = new HashSet<TrainJournal>();
+            this.WaistTables = new HashSet<WaistTable>();
+            this.Weights = new HashSet<Weight>();
         }
-
-        private string name;
-        private string image;
+    
         public string Identificator { get; set; }
         public string Password { get; set; }
-        public string Name
-        {
-            get { return name; }
-            set { name = value; OnPropertyChanged("Name"); }
-        }
-
-        public string Image
-        {
-            get
-            {
-                return image;
-            }
-            set
-            {
-                image = value;
-                OnPropertyChanged("Image");
-            }
-        }
-
+        public string Name { get; set; }
+        public string Image { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<C1RPmax> C1RPmax { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -72,11 +51,5 @@ namespace TrainingJournal
         public virtual ICollection<WaistTable> WaistTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Weight> Weights { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }
