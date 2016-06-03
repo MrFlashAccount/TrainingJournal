@@ -21,7 +21,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/squat.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpages/userantropometry.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournal.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournal.edmx.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainingjournal.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("trainjournal.edmx.sql")]
 
 

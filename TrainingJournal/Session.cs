@@ -363,6 +363,7 @@ namespace TrainingJournal
                 _neckTables = new List<NeckTable>();
                 _shinTables = new List<ShinTable>();
                 _waistTables = new List<WaistTable>();
+                _userWeights = new List<Weight>();
 
                 LoginedUser = null;
                 IsStarted = false;
